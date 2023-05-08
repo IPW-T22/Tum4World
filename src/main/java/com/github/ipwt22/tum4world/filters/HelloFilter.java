@@ -1,4 +1,4 @@
-package com.github.ipwt22.tumaini.filters;
+package com.github.ipwt22.tum4world.filters;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;

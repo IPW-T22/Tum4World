@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Tumaini - Sign-In</title>
+    <title>Tum4World - Sign-In</title>
 </head>
 <body>
     <jsp:include page="../components/header.jsp"/>

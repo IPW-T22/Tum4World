@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.ipw-t22</groupId>
-    <artifactId>tumaini</artifactId>
+    <artifactId>tum4world</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Tumaini</name>
+    <name>Tum4World</name>
     <packaging>war</packaging>
 
     <properties>

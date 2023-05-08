@@ -1,4 +1,4 @@
-package com.github.ipwt22.tumaini.controllers;
+package com.github.ipwt22.tum4world.controllers;
 
 import java.io.*;
 import javax.servlet.ServletException;
