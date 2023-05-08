@@ -4,8 +4,8 @@
     <title>Tum4World - Pagina Attività</title>
 </head>
 <body>
-    <jsp:include page="../components/header.jsp"/>
+    <jsp:include page="../componenti/header.jsp"/>
 
-    <jsp:include page="../components/footer.jsp"/>
+    <jsp:include page="../componenti/footer.jsp"/>
 </body>
 </html>
