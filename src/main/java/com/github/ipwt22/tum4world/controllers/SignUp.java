@@ -5,13 +5,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "signupServlet", value = "/signup")
+@WebServlet(name = "signup", value = "/signup")
 public class SignUp extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/WEB-INF/jsp/public/signup.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/pubblico/signup.jsp").forward(request, response);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/WEB-INF/jsp/public/registrazioneconfermata.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/pubblico/registrazioneconfermata.jsp").forward(request, response);
         System.out.println("GESTISCO REGISTRAZIONE");
     }
 }

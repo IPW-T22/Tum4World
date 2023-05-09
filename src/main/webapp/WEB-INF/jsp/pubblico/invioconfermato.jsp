@@ -3,6 +3,7 @@
 <head>
     <title>Tum4World - Invio Confermato</title>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
