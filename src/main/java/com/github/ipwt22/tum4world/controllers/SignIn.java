@@ -1,5 +1,8 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.models.UserManager;
+import com.github.ipwt22.tum4world.models.Utente;
+
 import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -11,6 +14,12 @@ public class SignIn extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("GESTISCO IL LOGIN");
+        String username = request.getParameter("username");
+        String hashPassword = request.getParameter("hashPassword");
+        UserManager userManager = new UserManager(username);
+        if(userManager.signIn(request, username, hashPassword))
+            response.sendRedirect("homepage");
+        else
+            response.sendRedirect("signin?error=true");
     }
 }

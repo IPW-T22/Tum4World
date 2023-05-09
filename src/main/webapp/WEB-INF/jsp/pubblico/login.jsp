@@ -15,10 +15,15 @@
                 <input type="text" id="username" name="username" >
                 <br>
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" >
+                <input type="password" id="password" name="hashPassword" >
                 <br>
                 <button type="submit">Login</button>
                 <button type="reset">Reset</button>
+                <%
+                    if(request.getParameter("error")!=null) {
+                        out.print("<p>Errore username o password errata</p>");
+                    }
+                %>
             </form>
         </div>
     </main>

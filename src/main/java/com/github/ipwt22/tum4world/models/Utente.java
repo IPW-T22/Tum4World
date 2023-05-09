@@ -4,12 +4,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Utente implements Serializable {
-    private String nome;
-    private String cognome;
-    private Date dataDiNascita;
-    private String email;
-    private String telefono;
+    public enum Ruolo {
+        SIMPATIZZANTE,
+        ADERENTE,
+        AMMINISTRATORE
+    }
+    private String nome = "null";
+    private String cognome = "null";
+    private Date dataDiNascita = null;
+    private String email = "null";
+    private String telefono = "null";
     private Ruolo ruolo;
+
+    private String username = "null";
+    private String hashPassword = "null";
 
     public String getUsername() {
         return username;
@@ -18,8 +26,6 @@ public class Utente implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    private String username;
 
     public String getNome() {
         return nome;
@@ -76,11 +82,4 @@ public class Utente implements Serializable {
     public void setHashPassword(String hashPassword) {
         this.hashPassword = hashPassword;
     }
-
-    public enum Ruolo {
-        SIMPATIZZANTE,
-        ADERENTE,
-        AMMINISTRATORE
-    }
-    private String hashPassword;
 }

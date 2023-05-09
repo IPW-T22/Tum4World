@@ -1,4 +1,4 @@
-+<%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <html lang="it">
 <head>
     <title>Tum4World - Sign Up</title>
@@ -27,9 +27,9 @@
                 <input type="tel" id="telefono" name="telefono" >
                 <br>
                 <label>Tipo di registrazione:</label>
-                <input type="radio" id="simpatizzante" name="tipo_registrazione" value="simpatizzante" checked>
+                <input type="radio" id="simpatizzante" name="tipo_registrazione" value="SIMPATIZZANTE" checked>
                 <label for="simpatizzante">Simpatizzante</label>
-                <input type="radio" id="aderente" name="tipo_registrazione" value="aderente" >
+                <input type="radio" id="aderente" name="tipo_registrazione" value="ADERENTE" >
                 <label for="aderente">Aderente</label>
                 <br>
                 <label for="username">Username:</label>
@@ -43,6 +43,11 @@
                 <br>
                 <button type="submit">Registrati</button>
                 <button type="reset">Reset</button>
+                <%
+                    if(request.getParameter("error")!=null) {
+                        out.print("<p>Errore username già esistente</p>");
+                    }
+                %>
             </form>
         </div>
     </main>
