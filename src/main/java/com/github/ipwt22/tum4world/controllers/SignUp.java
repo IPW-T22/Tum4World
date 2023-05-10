@@ -21,7 +21,7 @@ public class SignUp extends HttpServlet {
         String cognome = request.getParameter("cognome");
         Date dataDiNascita = null;
         try {
-            dataDiNascita = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data_nascita"));
+            dataDiNascita = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data_nascita"));
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }

@@ -3,6 +3,7 @@ package com.github.ipwt22.tum4world.models;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.Random;
 
 public class UserManager {
     public Utente user = new Utente();
@@ -15,9 +16,15 @@ public class UserManager {
 
     public boolean signIn(HttpServletRequest request, String username, String hashPassword){
         HttpSession session = null;
-        if(username.equals(user.getUsername()) && hashPassword.equals(user.getHashPassword())) {
-            session = request.getSession();
-            session.setAttribute("BeanUtente", user);
+        if (username.equals(user.getUsername()) && hashPassword.equals(user.getHashPassword())) {
+            if(request.getParameter("cookieAccepted")!=null && request.getParameter("cookieAccepted").equals("true")) {
+                session = request.getSession();
+                session.setAttribute("BeanUtente", user);
+            }
+            else{
+                Random random = new Random();
+                user.setKey(user.getUsername() + ":" + random.nextInt());
+            }
             return true;
         }
         return false;
@@ -36,13 +43,24 @@ public class UserManager {
         user.setUsername(username);
         user.setHashPassword(hashPassword);
         //REGISTRA UTENTE INVOCANDO IL DB su user
+        if(request.getParameter("cookieAccepted")!=null) {
+            session = request.getSession();
+            session.setAttribute("BeanUtente", user);
+        }
+        else{
+            Random random = new Random();
+            user.setKey(user.getUsername() + ":" + random.nextInt());
+        }
         return true;
     }
-
-    public boolean logout(HttpServletRequest request){
-        HttpSession session= request.getSession (false);
+    public void logout(HttpServletRequest request){
+        HttpSession session = request.getSession (false);
         if (session!=null)
             session.invalidate();
-        return true;
+        user.setKey("null");
+    }
+
+    public void populateUser(String username){
+        //INVOCO IL DB PER OTTENERE I DATI DI USERNAME
     }
 }

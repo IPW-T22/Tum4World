@@ -17,8 +17,14 @@ public class SignIn extends HttpServlet {
         String username = request.getParameter("username");
         String hashPassword = request.getParameter("hashPassword");
         UserManager userManager = new UserManager(username);
-        if(userManager.signIn(request, username, hashPassword))
-            response.sendRedirect("homepage");
+        if(userManager.signIn(request, username, hashPassword)) {
+            if(userManager.user.getRuolo()== Utente.Ruolo.SIMPATIZZANTE){
+                response.sendRedirect("simpatizzante?id="+userManager.user.getKey());
+            }
+            else{
+                response.sendRedirect("aderente?id="+userManager.user.getKey());
+            }
+        }
         else
             response.sendRedirect("signin?error=true");
     }

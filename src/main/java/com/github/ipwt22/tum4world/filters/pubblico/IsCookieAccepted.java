@@ -1,11 +1,11 @@
-package com.github.ipwt22.tum4world.filters;
+package com.github.ipwt22.tum4world.filters.pubblico;
 
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebFilter(filterName = "HelloFilter", urlPatterns = {"/"})
-public class HelloFilter implements Filter {
+@WebFilter(filterName = "IsCookieAccepted", urlPatterns = {"/"})
+public class IsCookieAccepted implements Filter {
     public void init(FilterConfig config) throws ServletException {}
     public void destroy() {}
 

@@ -14,10 +14,12 @@ public class Utente implements Serializable {
     private Date dataDiNascita = null;
     private String email = "null";
     private String telefono = "null";
-    private Ruolo ruolo;
+    private Ruolo ruolo = Ruolo.SIMPATIZZANTE;
 
     private String username = "null";
     private String hashPassword = "null";
+
+    private String key = "null";
 
     public String getUsername() {
         return username;
@@ -81,5 +83,13 @@ public class Utente implements Serializable {
 
     public void setHashPassword(String hashPassword) {
         this.hashPassword = hashPassword;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

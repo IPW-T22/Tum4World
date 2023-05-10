@@ -3,6 +3,7 @@
 <head>
     <title>Tum4World - Home page</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 <body>

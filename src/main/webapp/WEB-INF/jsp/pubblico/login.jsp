@@ -11,14 +11,20 @@
         <h1>Login</h1>
         <div>
             <form action="signin" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" >
+                <span>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" >
+                </span>
                 <br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="hashPassword" >
+                <span>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="hashPassword" >
+                </span>
                 <br>
-                <button type="submit">Login</button>
-                <button type="reset">Reset</button>
+                <span>
+                    <button type="submit">Login</button>
+                    <button type="reset">Reset</button>
+                </span>
                 <%
                     if(request.getParameter("error")!=null) {
                         out.print("<p>Errore username o password errata</p>");
