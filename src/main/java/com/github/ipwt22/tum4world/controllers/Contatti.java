@@ -1,5 +1,7 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.models.EmailSender;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +15,21 @@ public class Contatti extends HttpServlet {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/contatti.jsp").forward(request, response);
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("GESTISCO CONTATTACI");
+        String nome = request.getParameter("nome");
+        String cognome = request.getParameter("cognome");
+        String email = request.getParameter("email");
+        String motivoContatto = request.getParameter("motivo_contatto");
+        String dettagliRichiesta = request.getParameter("dettagli_richiesta");
+
+        EmailSender emailSender = new EmailSender();
+        emailSender.sendEmail(email, "Motivo del contatto: " + motivoContatto,
+                "Gentile " + nome + " " + cognome +
+                        ",\n grazie per averci contattato a causa della seguente richiesta: \n\n"
+                        + dettagliRichiesta +
+                        "\n Le faremo sapere al più presto. Cordiali saluti," +
+                        "\nTum4World"
+        );
+
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/invioconfermato.jsp").forward(request, response);
     }
 }

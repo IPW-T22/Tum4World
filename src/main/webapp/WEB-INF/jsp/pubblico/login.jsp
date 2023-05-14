@@ -27,7 +27,7 @@
                 </span>
                 <%
                     if(request.getParameter("error")!=null) {
-                        out.print("<p>Errore username o password errata</p>");
+                        out.print("<p>T22: Errore username o password errata</p>");
                     }
                 %>
             </form>

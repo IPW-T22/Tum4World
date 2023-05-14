@@ -7,11 +7,11 @@ import java.util.Random;
 
 public class UserManager {
     public Utente user = new Utente();
-    //QUI DEVO AVERE UNA CLASSE CHE MI PERMETTE DI INTERROGARE IL DB
+    private DatabaseManager databaseManager = new DatabaseManager();
     public UserManager() {}
 
     public UserManager(String username) {
-        //POPOLO user dal database fetchando tramite l'username
+        populateUser(username);
     }
 
     public boolean signIn(HttpServletRequest request, String username, String hashPassword){
@@ -24,6 +24,7 @@ public class UserManager {
             else{
                 Random random = new Random();
                 user.setKey(user.getUsername() + ":" + random.nextInt());
+                databaseManager.setKeyOfUser(username, user.getKey());
             }
             return true;
         }
@@ -42,7 +43,7 @@ public class UserManager {
         user.setRuolo(ruolo);
         user.setUsername(username);
         user.setHashPassword(hashPassword);
-        //REGISTRA UTENTE INVOCANDO IL DB su user
+        databaseManager.signUp(user);
         if(request.getParameter("cookieAccepted")!=null) {
             session = request.getSession();
             session.setAttribute("BeanUtente", user);
@@ -58,9 +59,10 @@ public class UserManager {
         if (session!=null)
             session.invalidate();
         user.setKey("null");
+        databaseManager.setKeyOfUser(user.getUsername(), user.getKey());
     }
 
     public void populateUser(String username){
-        //INVOCO IL DB PER OTTENERE I DATI DI USERNAME
+        user = databaseManager.getUserFromUsername(username);
     }
 }

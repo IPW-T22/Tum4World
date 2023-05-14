@@ -65,7 +65,7 @@
                 </span>
                 <%
                     if(request.getParameter("error")!=null) {
-                        out.print("<p>Errore username già esistente</p>");
+                        out.print("<p>T22: Errore username già esistente</p>");
                     }
                 %>
             </form>
