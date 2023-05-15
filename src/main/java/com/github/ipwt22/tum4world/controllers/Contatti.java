@@ -22,14 +22,8 @@ public class Contatti extends HttpServlet {
         String dettagliRichiesta = request.getParameter("dettagli_richiesta");
 
         EmailSender emailSender = new EmailSender();
-        emailSender.sendEmail(email, "Motivo del contatto: " + motivoContatto,
-                "Gentile " + nome + " " + cognome +
-                        ",\n grazie per averci contattato a causa della seguente richiesta: \n\n"
-                        + dettagliRichiesta +
-                        "\n Le faremo sapere al più presto. Cordiali saluti," +
-                        "\nTum4World"
-        );
+        emailSender.sendEmailContattaci(nome, cognome, email, motivoContatto, dettagliRichiesta);
 
-        request.getRequestDispatcher("/WEB-INF/jsp/pubblico/invioconfermato.jsp").forward(request, response);
+        response.sendRedirect("invioconfermato?id=" + request.getParameter("id"));
     }
 }

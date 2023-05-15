@@ -9,7 +9,6 @@ import javax.activation.*;*/
 
 public class EmailSender {
     private String from = "tum4world@nessunonoluogoesistente.com";
-    private String to = null;
     private String host = "localhost";
     private Properties properties = System.getProperties();
 
@@ -20,8 +19,14 @@ public class EmailSender {
         //Session session = Session.getDefaultInstance(properties);
     }
 
-    public void sendEmail(String to, String header, String message){
-        this.to = to;
+    public void sendEmailContattaci(String nome, String cognome, String to, String motivoContatto, String dettagliRichiesta){
+        String header = "Motivo del contatto: " + motivoContatto;
+        String content = "Gentile " + nome + " " + cognome +
+                ",\n grazie per averci contattato a causa della seguente richiesta: \n\n"
+                + dettagliRichiesta +
+                "\n Le faremo sapere al più presto. Cordiali saluti," +
+                "\nTum4World";
+
         /*try {
             // Create a default MimeMessage object.
             MimeMessage message = new MimeMessage(session);
@@ -33,10 +38,10 @@ public class EmailSender {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("This is the Subject Line!");
+            message.setSubject(header);
 
             // Now set the actual message
-            message.setText("This is actual message");
+            message.setText(content);
 
             // Send message
             Transport.send(message);

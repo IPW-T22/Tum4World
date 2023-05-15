@@ -8,6 +8,9 @@
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
+    <%
+        String id = request.getParameter("id");
+    %>
     <main>
         <div>
             <h1>Contattaci</h1>
@@ -17,7 +20,7 @@
             <p>Numero telefono associazione: 5(325)779-72-14</p>
         </div>
         <div>
-            <form action="contatti" method="post">
+            <form action="contatti?id=<%= id %>" method="post">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" >
                 <br>

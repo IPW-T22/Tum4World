@@ -1,7 +1,11 @@
 package com.github.ipwt22.tum4world.models;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Random;
 
 public class Utente implements Serializable {
     public enum Ruolo {
@@ -20,6 +24,9 @@ public class Utente implements Serializable {
     private String hashPassword = "null";
 
     private String key = "null";
+
+    public Utente() {
+    }
 
     public String getUsername() {
         return username;
@@ -91,5 +98,84 @@ public class Utente implements Serializable {
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    private String get_value_from_cookie(String name, HttpServletRequest request){
+        Cookie[] cookies =  request.getCookies();
+        if(cookies!=null && cookies.length!=0){
+            for(Cookie c : cookies){
+                String nameCookie = c.getName();
+                if(nameCookie.equals(name)){
+                    return c.getValue();
+                }
+            }
+        }
+        return null;
+    }
+
+    public void setUser(Utente user){
+        this.nome = user.getNome();
+        this.cognome = user.getCognome();
+        this.key = user.getKey();
+        this.email = user.getKey();
+        this.telefono = user.getTelefono();
+        this.ruolo = user.getRuolo();
+        this.username = user.getUsername();
+        this.dataDiNascita = user.getDataDiNascita();
+        this.hashPassword = user.getHashPassword();
+    }
+
+    public void populateUser(String username){
+        Utente user = DB.getUserFromUsername(username);
+        if(user!=null)
+            setUser(user);
+    }
+
+    //fa efettuare il login
+    public boolean login(HttpServletRequest request, String username, String hashPassword){
+        HttpSession session = null;
+        Utente user = DB.getUserFromUsername(username);
+        String cookieAcceptedVal = get_value_from_cookie("cookieAccepted", request);
+        //se il login è corretto
+        if (username.equals(user.getUsername()) && hashPassword.equals(user.getHashPassword())) {
+            if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
+                session = request.getSession();
+                session.setAttribute("BeanUtente", user);
+            }
+            else{
+                Random random = new Random();
+                key = username + ":" + random.nextInt();
+                System.out.println(key);
+                DB.setKeyOfUser(username, key);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean signUp(HttpServletRequest request, String nome, String cognome, Date dataDiNascita, String email, String telefono, Utente.Ruolo ruolo, String username, String hashPassword){
+        HttpSession session = null;
+        Utente user = DB.getUserFromUsername("username");
+        if(user!=null && false)
+            return false;
+        setUser(user);
+        DB.signUp(user);
+        if(request.getParameter("cookieAccepted")!=null) {
+            session = request.getSession();
+            session.setAttribute("BeanUtente", user);
+        }
+        else{
+            Random random = new Random();
+            key = username + ":" + random.nextInt();
+            DB.setKeyOfUser(username, key);
+        }
+        return true;
+    }
+    public void logout(HttpServletRequest request){ //l'utente corrente effettua il logout
+        HttpSession session = request.getSession (false);
+        if (session!=null)
+            session.invalidate();
+        key = "null";
+        DB.setKeyOfUser(username, key);
     }
 }

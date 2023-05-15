@@ -23,9 +23,11 @@ public class AuthenticationFilter implements Filter {
             HttpSession sessione = ((HttpServletRequest) request).getSession(false);
             String token = (String) sessione.getAttribute("token");
             Utente utente = UtenteController.risolvi(token);
+            System.out.println(utente.getUsername());
             request.setAttribute("utente", utente);
             chain.doFilter(request,response);
         } catch (Exception e) {
+            e.printStackTrace();
             request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
         }
     }

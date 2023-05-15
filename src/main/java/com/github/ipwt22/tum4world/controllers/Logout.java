@@ -1,6 +1,6 @@
 package com.github.ipwt22.tum4world.controllers;
 
-import com.github.ipwt22.tum4world.models.UserManager;
+import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
@@ -11,8 +11,8 @@ import javax.servlet.annotation.*;
 @WebServlet(name = "logout", value = "/logout")
 public class Logout extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        UserManager userManager = new UserManager();
-        userManager.logout(request);
+        Utente user = DB.getUserFromKey(request.getParameter("id"));
+        user.logout(request);
         response.sendRedirect("homepage");
     }
 }

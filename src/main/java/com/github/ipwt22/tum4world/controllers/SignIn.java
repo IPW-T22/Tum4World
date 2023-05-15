@@ -1,6 +1,5 @@
 package com.github.ipwt22.tum4world.controllers;
 
-import com.github.ipwt22.tum4world.models.UserManager;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
@@ -16,14 +15,10 @@ public class SignIn extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String hashPassword = request.getParameter("hashPassword");
-        UserManager userManager = new UserManager(username);
-        if(userManager.signIn(request, username, hashPassword)) {
-            if(userManager.user.getRuolo()== Utente.Ruolo.SIMPATIZZANTE){
-                response.sendRedirect("simpatizzante?id="+userManager.user.getKey());
-            }
-            else{
-                response.sendRedirect("aderente?id="+userManager.user.getKey());
-            }
+        Utente user = new Utente();
+        if(user.login(request, username, hashPassword)) {
+            System.out.println("CHIAVE:" + user.getKey());
+            response.sendRedirect("dashboard?id=" + user.getKey());
         }
         else
             response.sendRedirect("signin?error=true");

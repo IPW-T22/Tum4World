@@ -1,6 +1,5 @@
 package com.github.ipwt22.tum4world.controllers;
 
-import com.github.ipwt22.tum4world.models.UserManager;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
@@ -33,9 +32,9 @@ public class SignUp extends HttpServlet {
         String username = request.getParameter("username");
         String hashPassword = request.getParameter("password");
 
-        UserManager userManager = new UserManager(username);
-        if(userManager.signUp(request, nome, cognome, dataDiNascita, email, telefono, ruolo, username, hashPassword))
-            request.getRequestDispatcher("/WEB-INF/jsp/pubblico/registrazioneconfermata.jsp").forward(request, response);
+        Utente user = new Utente();
+        if(user.signUp(request, nome, cognome, dataDiNascita, email, telefono, ruolo, username, hashPassword))
+            response.sendRedirect("registrazioneconfermata?id="+user.getKey());
         else
             response.sendRedirect("signup?error=true");
     }

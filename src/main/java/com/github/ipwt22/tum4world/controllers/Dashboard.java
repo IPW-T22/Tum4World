@@ -1,4 +1,4 @@
-package com.github.ipwt22.tum4world.servlets;
+package com.github.ipwt22.tum4world.controllers;
 
 import com.github.ipwt22.tum4world.models.Utente;
 
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "dashboardServlet", value = "/dashboard")
-public class DashboardServlet extends HttpServlet {
+public class Dashboard extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         RequestDispatcher dispatcher = null;

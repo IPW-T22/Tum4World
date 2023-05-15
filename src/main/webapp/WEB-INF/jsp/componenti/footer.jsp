@@ -1,10 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <footer>
 
+    <script type="text/javascript"> <%@ include file="../../../js/cookieScript.js" %> </script>
     <%
-        if(request.getParameter("cookieAccepted")==null)
-            out.println("<div id=\"\"> <p>Messaggio Cookie</p> <span><button id=\"decline\">Decline</button> <button id=\"accept\">Accept</button></span> </div>");
+        String cookieAcceptedVal = null;
+        Cookie[] cookies =  request.getCookies();
+        if(cookies!=null && cookies.length!=0)
+            for(Cookie c : cookies){
+                String nameCookie = c.getName();
+                if(nameCookie.equals("cookieAccepted"))
+                    cookieAcceptedVal = c.getValue();
+            }
+        if(cookieAcceptedVal==null){
     %>
+            <%@ include file="cookie_banner.html" %>
+    <% } %>
+
 
     <div>
         <h4>Contatti</h4>
