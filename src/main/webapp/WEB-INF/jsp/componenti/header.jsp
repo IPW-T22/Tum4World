@@ -5,19 +5,19 @@
         <ul>
             <%
                 HttpSession session = request.getSession(false);
-                String id = request.getParameter("id");
+                String token = request.getParameter("token");
             %>
-            <li><a href="homepage?id=<%= id %>">Home</a></li>
-            <li><a href="chisiamo?id=<%= id %>">Chi siamo</a></li>
-            <li><a href="attivita?id=<%= id %>">Attività</a></li>
-            <li><a href="contatti?id=<%= id %>">Contatti</a></li>
+            <li><a href="homepage">Home</a></li>
+            <li><a href="chisiamo">Chi siamo</a></li>
+            <li><a href="attivita">Attività</a></li>
+            <li><a href="contatti">Contatti</a></li>
             <%
-                if(session==null && (id==null || id.equals("null"))){
-                    out.println("<li><a href=\"signup?id="+ id +"\">Sign-up</a></li>");
-                    out.println("<li><a href=\"signin?id="+ id +"\">Login</a></li>");
+                if(session==null && (token==null || token.equals("null"))){
+                    out.println("<li><a href=\"signup?token="+ token +"\">Sign-up</a></li>");
+                    out.println("<li><a href=\"signin?token="+ token +"\">Login</a></li>");
                 }
-                if(session!=null || (id!=null && !id.equals("null") )) //DOVREI CONTROLLARE CHE L'ID È VALIDO
-                    out.print("<li><a href=\"logout?id="+ id +"\">Logout</a></li>");
+                if(session!=null || (token!=null && !token.equals("null") )) //DOVREI CONTROLLARE CHE L'ID È VALIDO
+                    out.print("<li><a href=\"logout?token="+ token +"\">Logout</a></li>");
             %>
         </ul>
     </div>

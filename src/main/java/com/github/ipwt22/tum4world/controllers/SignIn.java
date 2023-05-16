@@ -17,8 +17,8 @@ public class SignIn extends HttpServlet {
         String hashPassword = request.getParameter("hashPassword");
         Utente user = new Utente();
         if(user.login(request, username, hashPassword)) {
-            System.out.println("CHIAVE:" + user.getKey());
-            response.sendRedirect("dashboard?id=" + user.getKey());
+            System.out.println("CHIAVE:" + user.getToken());
+            response.sendRedirect("dashboard?token=" + user.getToken());
         }
         else
             response.sendRedirect("signin?error=true");

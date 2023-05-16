@@ -34,7 +34,7 @@ public class SignUp extends HttpServlet {
 
         Utente user = new Utente();
         if(user.signUp(request, nome, cognome, dataDiNascita, email, telefono, ruolo, username, hashPassword))
-            response.sendRedirect("registrazioneconfermata?id="+user.getKey());
+            response.sendRedirect("registrazioneconfermata?token="+user.getToken());
         else
             response.sendRedirect("signup?error=true");
     }

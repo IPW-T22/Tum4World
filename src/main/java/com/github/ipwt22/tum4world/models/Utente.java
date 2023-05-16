@@ -23,7 +23,7 @@ public class Utente implements Serializable {
     private String username = "null";
     private String hashPassword = "null";
 
-    private String key = "null";
+    private String token = "null";
 
     public Utente() {
     }
@@ -92,17 +92,17 @@ public class Utente implements Serializable {
         this.hashPassword = hashPassword;
     }
 
-    public String getKey() {
-        return key;
+    public String getToken() {
+        return token;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     private String get_value_from_cookie(String name, HttpServletRequest request){
         Cookie[] cookies =  request.getCookies();
-        if(cookies!=null && cookies.length!=0){
+        if(cookies != null){
             for(Cookie c : cookies){
                 String nameCookie = c.getName();
                 if(nameCookie.equals(name)){
@@ -116,8 +116,8 @@ public class Utente implements Serializable {
     public void setUser(Utente user){
         this.nome = user.getNome();
         this.cognome = user.getCognome();
-        this.key = user.getKey();
-        this.email = user.getKey();
+        this.token = user.getToken();
+        this.email = user.getToken();
         this.telefono = user.getTelefono();
         this.ruolo = user.getRuolo();
         this.username = user.getUsername();
@@ -144,9 +144,9 @@ public class Utente implements Serializable {
             }
             else{
                 Random random = new Random();
-                key = username + ":" + random.nextInt();
-                System.out.println(key);
-                DB.setKeyOfUser(username, key);
+                token = username + ":" + random.nextInt();
+                System.out.println(token);
+                DB.setKeyOfUser(username, token);
             }
             return true;
         }
@@ -156,7 +156,7 @@ public class Utente implements Serializable {
     public boolean signUp(HttpServletRequest request, String nome, String cognome, Date dataDiNascita, String email, String telefono, Utente.Ruolo ruolo, String username, String hashPassword){
         HttpSession session = null;
         Utente user = DB.getUserFromUsername("username");
-        if(user!=null && false)
+        if(false)
             return false;
         setUser(user);
         DB.signUp(user);
@@ -166,8 +166,8 @@ public class Utente implements Serializable {
         }
         else{
             Random random = new Random();
-            key = username + ":" + random.nextInt();
-            DB.setKeyOfUser(username, key);
+            token = username + ":" + random.nextInt();
+            DB.setKeyOfUser(username, token);
         }
         return true;
     }
@@ -175,7 +175,7 @@ public class Utente implements Serializable {
         HttpSession session = request.getSession (false);
         if (session!=null)
             session.invalidate();
-        key = "null";
-        DB.setKeyOfUser(username, key);
+        token = "null";
+        DB.setKeyOfUser(username, token);
     }
 }

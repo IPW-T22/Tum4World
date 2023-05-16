@@ -24,6 +24,6 @@ public class Contatti extends HttpServlet {
         EmailSender emailSender = new EmailSender();
         emailSender.sendEmailContattaci(nome, cognome, email, motivoContatto, dettagliRichiesta);
 
-        response.sendRedirect("invioconfermato?id=" + request.getParameter("id"));
+        response.sendRedirect("invioconfermato");
     }
 }
