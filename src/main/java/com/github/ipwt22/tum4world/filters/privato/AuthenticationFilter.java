@@ -21,11 +21,11 @@ public class AuthenticationFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         try {
             HttpSession sessione = ((HttpServletRequest) request).getSession(false);
-            String id = sessione != null ?
-                    sessione.getAttribute("id").toString():
-                    request.getAttribute("id").toString();
-            System.out.println("ID: " + id);
-            Utente utente = UtenteController.risolvi(id);
+            String token = sessione != null ?
+                    sessione.getAttribute("token").toString():
+                    request.getParameter("token");
+            System.out.println("Token: " + token);
+            Utente utente = UtenteController.risolvi(token);
             System.out.println(utente.getUsername());
             request.setAttribute("utente", utente);
             chain.doFilter(request,response);

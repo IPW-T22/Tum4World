@@ -17,7 +17,7 @@
             <% } %>
 
             <% if (session != null || (token != null && !token.equals("null"))) { //DOVREI CONTROLLARE CHE L'ID È VALIDO %>
-                <li><a href="logout">Logout</a></li>"
+                <li><a href="logout">Logout</a></li>
             <% } %>
         </ul>
     </div>
