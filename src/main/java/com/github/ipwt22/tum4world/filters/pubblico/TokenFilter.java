@@ -42,8 +42,8 @@ public class TokenFilter implements Filter {
                     queryString = "";
                 else
                     queryString = queryString + "&";
-
-                ((HttpServletResponse) servletResponse).sendRedirect(hsr.getRequestURI() + "?" + queryString + "token=" + token);
+                String redirectUrl = hsr.getRequestURI() + "?" + queryString + "token=" + token;
+                ((HttpServletResponse) servletResponse).sendRedirect(redirectUrl);
                 return;
             }
         }
