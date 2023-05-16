@@ -18,9 +18,11 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        try{
             HttpSession sessione = ((HttpServletRequest) request).getSession(false);
-            String token = request.getParameter("token");
-            if(token)
+            String token = sessione != null ?
+                    sessione.getAttribute("token").toString():
+                    request.getParameter("token");
             System.out.println("Token: " + token);
             Utente utente = UtenteController.risolvi(token);
             System.out.println(utente.getUsername());
