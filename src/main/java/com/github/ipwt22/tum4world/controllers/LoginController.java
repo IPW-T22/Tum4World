@@ -8,7 +8,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "login", value = "/login")
-public class Login extends HttpServlet {
+public class LoginController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
     }
@@ -21,7 +21,7 @@ public class Login extends HttpServlet {
             System.out.println("NON C'È ERRORE");
         }
         else {
-            response.sendRedirect("login?token=null&error=true");
+            response.sendRedirect("login?error=true");
             System.out.println("CI DOVREBBE ESSERE ERRORE");
         }
     }

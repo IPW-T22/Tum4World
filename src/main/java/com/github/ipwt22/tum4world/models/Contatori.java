@@ -1,7 +1,12 @@
 package com.github.ipwt22.tum4world.models;
 
+import argo.jdom.JsonNode;
+
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.stream.Collectors;
+
+import static argo.jdom.JsonNodeFactories.*;
 
 public class Contatori implements Serializable {
     // TODO: implementare il contatore con il DB
@@ -32,5 +37,15 @@ public class Contatori implements Serializable {
         }
         sb.append("}");
         return sb.toString();
+    }
+
+    public JsonNode toJson() {
+        return object(
+                getContatori()
+                .entrySet()
+                .stream()
+                .map(entry -> field(entry.getKey(), number(entry.getValue())))
+                .collect(Collectors.toList())
+        );
     }
 }

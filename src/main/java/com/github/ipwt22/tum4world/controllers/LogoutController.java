@@ -9,10 +9,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "logout", value = "/logout")
-public class Logout extends HttpServlet {
+public class LogoutController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        Utente user = DB.getUserFromKey(request.getParameter("id"));
-        user.logout(request);
-        response.sendRedirect("homepage?token=null");
+        try {
+            Utente user = DB.getUserFromToken(request.getParameter("token"));
+            user.logout(request);
+        } catch (Exception ignored) {}
+        response.sendRedirect("homepage?token");
     }
 }

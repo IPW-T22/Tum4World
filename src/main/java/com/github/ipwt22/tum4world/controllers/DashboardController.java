@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "dashboardServlet", value = "/dashboard")
-public class Dashboard extends HttpServlet {
+@WebServlet(name = "dashboard", value = "/dashboard")
+public class DashboardController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         RequestDispatcher dispatcher = null;

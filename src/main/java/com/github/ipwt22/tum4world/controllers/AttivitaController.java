@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "attivita", value = "/attivita")
-public class Attivita extends HttpServlet {
+public class AttivitaController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         if(request.getParameter("nomeAttivita")!=null)
             request.getRequestDispatcher("/WEB-INF/jsp/pubblico/attivita/" + request.getParameter("nomeAttivita")).forward(request, response);

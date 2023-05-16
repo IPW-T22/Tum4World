@@ -5,9 +5,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "invioconfermato", value = "/invioconfermato")
-public class InvioConfermato extends HttpServlet {
+@WebServlet(name = "homepageServlet", value = "/")
+public class HomepageController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        request.getRequestDispatcher("/WEB-INF/jsp/pubblico/invioconfermato.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/pubblico/homepage.jsp").forward(request, response);
     }
 }

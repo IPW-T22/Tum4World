@@ -11,7 +11,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "signup", value = "/signup")
-public class SignUp extends HttpServlet {
+public class SignUpController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/signup.jsp").forward(request, response);
     }

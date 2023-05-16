@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet(name = "citazione", value = "/citazione")
-public class Citazione extends HttpServlet {
+public class CitazioneController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         DB databaseManager = new DB();
         com.github.ipwt22.tum4world.models.Citazione citazione = databaseManager.getRandomCitazione();

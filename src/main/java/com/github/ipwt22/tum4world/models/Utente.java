@@ -28,6 +28,17 @@ public class Utente implements Serializable {
     public Utente() {
     }
 
+    public Utente(String nome, String cognome, Date dataDiNascita, String email, String telefono, Ruolo ruolo, String username, String hashPassword) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.dataDiNascita = dataDiNascita;
+        this.email = email;
+        this.telefono = telefono;
+        this.ruolo = ruolo;
+        this.username = username;
+        this.hashPassword = hashPassword;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -162,7 +173,7 @@ public class Utente implements Serializable {
         DB.signUp(user);
         if(request.getParameter("cookieAccepted")!=null) {
             session = request.getSession();
-            session.setAttribute("BeanUtente", user);
+            session.setAttribute("utente", user);
         }
         else{
             Random random = new Random();
@@ -177,5 +188,36 @@ public class Utente implements Serializable {
             session.invalidate();
         token = "null";
         DB.setKeyOfUser(username, token);
+    }
+
+    /**
+     * Verifica se l'utente è iscritto all'attività.
+     * @param utente
+     * @param attivita
+     * @return true se l'utente è iscritto all'attività, false altrimenti
+     */
+    public static boolean iscritto(Utente utente, Attivita attivita) {
+        // TODO: implementare il metodo
+        return true;
+    }
+
+    /**
+     * Ottiene l'utente a partire dal token.
+     * @param token
+     * @return Utente associato al token
+     */
+    public static Utente risolvi(String token) throws Exception {
+
+        // TODO: implementare il metodo
+        Utente utente = new Utente();
+        utente.setNome("Mario");
+        utente.setCognome("Rossi");
+        utente.setEmail("mario.rossi@esempio.com");
+        utente.setTelefono("0123456789");
+        utente.setUsername("mario.rossi");
+        utente.setDataDiNascita(new Date());
+        utente.setRuolo(Utente.Ruolo.AMMINISTRATORE);
+        return utente;
+        // throw new Exception("Utente non trovato");
     }
 }

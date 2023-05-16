@@ -11,16 +11,15 @@
             <li><a href="chisiamo">Chi siamo</a></li>
             <li><a href="attivita">Attività</a></li>
             <li><a href="contatti">Contatti</a></li>
-            <%
-                if(session==null && (token==null || token.equals("null"))){
-                    out.println("<li><a href=\"signup\">Sign-up</a></li>");
-                    out.println("<li><a href=\"login\">Login</a></li>");
-                }
-                if(session!=null || (token!=null && !token.equals("null") )) { //DOVREI CONTROLLARE CHE L'ID È VALIDO
-                    out.print("<li><a href=\"logout\">Logout</a></li>");
-                    out.print("<li><a href=\"dashboard\">Dashboard</a></li>");
-                }
-            %>
+            <% if(session==null && (token==null || token.equals(""))){ %>
+                <li><a href="signup">Sign-up</a></li>
+                <li><a href="login">Login</a></li>
+            <% } %>
+
+            <% if (session != null || (token != null && !token.equals(""))) { //DOVREI CONTROLLARE CHE L'ID È VALIDO %>
+                <li><a href="logout">Logout</a></li>
+                <li><a href="dashboard">Dashboard</a></li>
+            <% } %>
         </ul>
     </div>
     <span><p>Citazione: </p></span>
