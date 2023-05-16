@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "signin", value = "/signin")
-public class SignIn extends HttpServlet {
+@WebServlet(name = "login", value = "/login")
+public class Login extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
     }
