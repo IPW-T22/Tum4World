@@ -13,6 +13,6 @@ public class Logout extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente user = DB.getUserFromKey(request.getParameter("id"));
         user.logout(request);
-        response.sendRedirect("homepage");
+        response.sendRedirect("homepage?token=null");
     }
 }

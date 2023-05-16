@@ -7,7 +7,6 @@ import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(filterName = "CounterFilter", urlPatterns = {"/*"})
 public class CounterFilter implements Filter {
     private FilterConfig config;
     public void init(FilterConfig config) throws ServletException {
@@ -27,7 +26,6 @@ public class CounterFilter implements Filter {
             context.setAttribute("contatori", counter);
         }
         counter.incrementa(((HttpServletRequest) request).getRequestURI());
-        System.out.println(counter);
 
         chain.doFilter(request, response);
     }

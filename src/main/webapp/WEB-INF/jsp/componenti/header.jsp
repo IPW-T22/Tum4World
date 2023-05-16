@@ -13,11 +13,13 @@
             <li><a href="contatti">Contatti</a></li>
             <%
                 if(session==null && (token==null || token.equals("null"))){
-                    out.println("<li><a href=\"signup?token="+ token +"\">Sign-up</a></li>");
-                    out.println("<li><a href=\"signin?token="+ token +"\">Login</a></li>");
+                    out.println("<li><a href=\"signup\">Sign-up</a></li>");
+                    out.println("<li><a href=\"login\">Login</a></li>");
                 }
-                if(session!=null || (token!=null && !token.equals("null") )) //DOVREI CONTROLLARE CHE L'ID È VALIDO
-                    out.print("<li><a href=\"logout?token="+ token +"\">Logout</a></li>");
+                if(session!=null || (token!=null && !token.equals("null") )) { //DOVREI CONTROLLARE CHE L'ID È VALIDO
+                    out.print("<li><a href=\"logout\">Logout</a></li>");
+                    out.print("<li><a href=\"dashboard\">Dashboard</a></li>");
+                }
             %>
         </ul>
     </div>

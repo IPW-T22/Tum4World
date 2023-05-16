@@ -8,48 +8,34 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 
-@WebFilter(filterName = "TokenFilter", urlPatterns = {"/*"})
 public class TokenFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        if (servletRequest.getParameter("token") != null) {
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
-
         HttpServletRequest hsr = (HttpServletRequest) servletRequest;
-        String referer = hsr.getHeader("referer");
-        if (referer == null) {
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
+        String referer = hsr.getHeader("referer"); //URL dell'intera pagina
+        String query;
 
-        String query = URI.create(referer).getQuery();
-        if (query == null) {
-            filterChain.doFilter(servletRequest, servletResponse);
-            return;
-        }
+        if (hsr.getMethod().equalsIgnoreCase("GET") && servletRequest.getParameter("token")==null && referer!=null){ //se la richiesta fatta è una GET e non ha il token e l'url non è vuoto
+            query = URI.create(referer).getQuery(); //stringa che contiene tutti i parametri specificati dopo '?' e separati da '&' della richiesta precedente
+            if (query != null){
+                String[] params = query.split("&"); //separo i singoli parametri
+                for (String param : params) {
+                    String[] pair = param.split("="); //separo le singole coppie di ogni parametro
+                    if (pair[0].equals("token")) { //se il parametro è il token
+                        String token = pair[1]; //memorizzo il suo valore
 
-        String[] params = query.split("&");
-        for (String param : params) {
-            String[] pair = param.split("=");
-            if (pair[0].equals("token")) {
-                String token = pair[1];
-                System.out.println("Token: " + token);
-
-                String queryString = hsr.getQueryString();
-                if (queryString == null)
-                    queryString = "";
-                else
-                    queryString = queryString + "&";
-
-                ((HttpServletResponse) servletResponse).sendRedirect(hsr.getRequestURI() + "?" + queryString + "token=" + token);
-                return;
+                        String queryString = hsr.getQueryString();
+                        if (queryString == null)
+                            queryString = "";
+                        else
+                            queryString = queryString + "&";
+                        ((HttpServletResponse) servletResponse).sendRedirect(hsr.getRequestURI() + "?" + queryString + "token=" + token); //costruisco l'url corretto della prossima pagina che dovrò visitare e la visito
+                        return;
+                    }
+                }
             }
         }
-
-        filterChain.doFilter(servletRequest, servletResponse);
-
+        filterChain.doFilter(servletRequest, servletResponse); //proseguo alla risorsa/pagina
     }
 
     @Override

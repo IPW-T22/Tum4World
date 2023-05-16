@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <footer>
-
     <script type="text/javascript"> <%@ include file="../../../js/cookieScript.js" %> </script>
     <%
         String cookieAcceptedVal = null;

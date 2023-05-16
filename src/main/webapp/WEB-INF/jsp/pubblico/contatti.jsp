@@ -8,9 +8,6 @@
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
-    <%
-        String token = request.getParameter("token");
-    %>
     <main>
         <div>
             <h1>Contattaci</h1>

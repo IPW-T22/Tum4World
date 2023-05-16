@@ -144,7 +144,7 @@ public class Utente implements Serializable {
             }
             else{
                 Random random = new Random();
-                token = username + ":" + random.nextInt();
+                token = username + ":" + random.nextInt( 100000);
                 System.out.println(token);
                 DB.setKeyOfUser(username, token);
             }
@@ -166,7 +166,7 @@ public class Utente implements Serializable {
         }
         else{
             Random random = new Random();
-            token = username + ":" + random.nextInt();
+            token = username + ":" + random.nextInt(100000);
             DB.setKeyOfUser(username, token);
         }
         return true;

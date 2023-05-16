@@ -10,7 +10,7 @@
     <main>
         <h1>Login</h1>
         <div>
-            <form action="signin" method="post">
+            <form action="login" method="post">
                 <span>
                     <label for="username">Username:</label>
                     <input type="text" id="username" name="username" >

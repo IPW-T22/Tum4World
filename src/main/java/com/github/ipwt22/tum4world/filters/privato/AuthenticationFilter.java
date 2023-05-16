@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/dashboard"})
 public class AuthenticationFilter implements Filter {
     public void init(FilterConfig config) throws ServletException {
     }
@@ -19,13 +18,11 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-        try {
             HttpSession sessione = ((HttpServletRequest) request).getSession(false);
-            String id = sessione != null ?
-                    sessione.getAttribute("id").toString():
-                    request.getAttribute("id").toString();
-            System.out.println("ID: " + id);
-            Utente utente = UtenteController.risolvi(id);
+            String token = request.getParameter("token");
+            if(token)
+            System.out.println("Token: " + token);
+            Utente utente = UtenteController.risolvi(token);
             System.out.println(utente.getUsername());
             request.setAttribute("utente", utente);
             chain.doFilter(request,response);
