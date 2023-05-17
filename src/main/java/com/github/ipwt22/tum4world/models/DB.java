@@ -7,12 +7,12 @@ import java.util.List;
 public class DB {
     //settings per il database
 
-    public static boolean signUp(Utente user){
+    public static boolean signUp(Utente user) {
 
         return true;
     }
 
-    public static Utente getUserFromUsername(String username){
+    public static Utente getUserFromUsername(String username) {
         Utente user = new Utente();
 
         return user;
@@ -20,6 +20,7 @@ public class DB {
 
     /**
      * Ottiene l'utente a partire dal token.
+     *
      * @param token
      * @return Utente associato al token
      */
@@ -38,13 +39,13 @@ public class DB {
         return utente;
     }
 
-    public static boolean setKeyOfUser(String username, String key){
+    public static boolean setKeyOfUser(String username, String key) {
 
         return true;
     }
 
 
-    public static Citazione getRandomCitazione(){
+    public static Citazione getRandomCitazione() {
         Citazione citazione = new Citazione();
         citazione.setCitazione("LASCIATE OGNI SPERANZA A VOI CHE ENTRATE");
         return citazione;
@@ -52,6 +53,7 @@ public class DB {
 
     /**
      * Verifica se l'utente è iscritto all'attività.
+     *
      * @param utente
      * @param attivita
      * @return true se l'utente è iscritto all'attività, false altrimenti
@@ -60,7 +62,7 @@ public class DB {
         return true;
     }
 
-    public static List<Donazione> getDonazioni(){
+    public static List<Donazione> getDonazioni() {
         return new ArrayList<>();
     }
 
