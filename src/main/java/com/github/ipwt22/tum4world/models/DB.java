@@ -1,6 +1,8 @@
 package com.github.ipwt22.tum4world.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DB {
     //settings per il database
@@ -56,5 +58,13 @@ public class DB {
      */
     public static boolean iscritto(Utente utente, Attivita attivita) {
         return true;
+    }
+
+    public static List<Donazione> getDonazioni(){
+        return new ArrayList<>();
+    }
+
+    public static void addDonation(Utente utente, int amount) {
+        // TODO: fai la donazione
     }
 }

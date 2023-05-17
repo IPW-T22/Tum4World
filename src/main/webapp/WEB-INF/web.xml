@@ -20,6 +20,7 @@
         <filter-name>AuthenticationFilter</filter-name>
         <url-pattern>/dashboard</url-pattern>
         <url-pattern>/contatori</url-pattern>
+        <url-pattern>/donazioni</url-pattern>
     </filter-mapping>
 
     <filter>
