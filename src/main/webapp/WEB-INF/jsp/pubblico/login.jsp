@@ -4,6 +4,7 @@
     <title>Tum4World - Login</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="CSS/pubblico/login.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
@@ -18,11 +19,13 @@
                 <br>
                 <span>
                     <label for="password">Password:</label>
+                    <br>
                     <input type="password" id="password" name="hashPassword" >
                 </span>
                 <br>
                 <span>
                     <button type="submit">Login</button>
+                    <br>
                     <button type="reset">Reset</button>
                 </span>
                 <%
