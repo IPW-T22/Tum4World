@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(172, 149, 149);
+    padding: 16px;
+    margin-left: 200px;
+    
+}
+main {
+    
+    
+        margin-left:30%;
+        margin-right:30%;
+        background-color: rgba(165, 42, 42, 0.61);
+        padding: 10px;
+        text-align: center;
+        color:white;
+        line-height: 300% ;
+        overflow-wrap: break-word;
+        font-size: 150%;
+        font-family: "Times New Roman", Times, serif;
+      
+}
+
+.main br {
+    clear: both; 
+  }
+
+button {
+    background-color: rgb(172, 149, 149);
+    border:none;
+    width: 30%;
+    height: 5% ;
+    color:white;
+    font-size: 60%;
+    font-family: "Times New Roman", Times, serif;
+  
+}
+
+input{
+    height: 3% ;
+    width: 60%;
+    border:none;
+}
