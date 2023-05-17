@@ -36,6 +36,11 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.argo</groupId>
+            <artifactId>argo</artifactId>
+            <version>6.5</version>
+        </dependency>
     </dependencies>
 
     <build>
