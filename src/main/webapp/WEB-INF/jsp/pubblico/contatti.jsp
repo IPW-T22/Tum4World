@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Tum4World - Contattaci</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/css/contatti.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
