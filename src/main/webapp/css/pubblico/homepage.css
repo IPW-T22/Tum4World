@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(221, 255, 68);
+    /*background-image: url("img1.jpg");*/
+    
+}
+main {
+    margin-left: 20%;
+    margin-right: 20%;
+    text-align: center;
+    font-size: 150%;
+    font-family: "Times New Roman", Times, serif;
+    
+
+}
+div {
+    margin:auto;
+    
+}
+
+img {
+    height: 150px;
+}
+#im1{
+    height: 300px;
+}
+button {
+    background-color: rgb(144, 190, 250);
+    border:none;
+    width: 30%;
+    height: 5% ;
+    color:white;
+    font-size: 100%;
+    font-family: "Times New Roman", Times, serif;
+  
+}
