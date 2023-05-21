@@ -8,6 +8,7 @@
 <body>
     <jsp:include page="../componenti/header.jsp"/>
     <main>
+        <br>
         <h1>Conferma invio messaggio</h1>
         <p>Il messaggio di contatto è stato inviato con successo riceverai al più presto una risposta. </p>
     </main>
