@@ -1,6 +1,5 @@
 body {
-    background-color: rgb(221, 255, 68);
-    /*background-image: url("img1.jpg");*/
+    background-color: rgb(146, 181, 255);
     
 }
 main {
@@ -19,12 +18,15 @@ div {
 
 img {
     height: 150px;
+    
 }
 #im1{
     height: 300px;
+    
 }
 button {
-    background-color: rgb(144, 190, 250);
+    margin-top:1em;
+    background-color: rgb(12, 12, 83);
     border:none;
     width: 30%;
     height: 5% ;
