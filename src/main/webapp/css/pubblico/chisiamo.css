@@ -1,0 +1,23 @@
+body {
+    background-color: rgb(172, 149, 149);
+    
+    
+}
+main {
+    background-color: rgba(165, 42, 42, 0.61);
+    text-align: center;
+    border-left:  150PX solid rgb(172, 149, 149);
+    border-right: 150PX solid rgb(172, 149, 149);
+    
+    font-size: 150%;
+    font-family: "Times New Roman", Times, serif;
+    
+
+}
+div {
+    margin:auto;
+    background-color: rgba(177, 107, 107, 0.61);
+}
+img {
+    height: 200px;
+}
