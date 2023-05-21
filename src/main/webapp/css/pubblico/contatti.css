@@ -1,0 +1,40 @@
+body {
+    background-color: rgb(119, 221, 119);
+    
+    
+}
+main {
+    margin-left: 10%;
+    margin-right: 40%;
+    margin-top:5%;
+    font-size: 150%;
+    font-family: "Times New Roman", Times, serif;
+    border:none;
+
+}
+div {
+    margin:auto;
+    
+}
+
+img {
+    height: 150px;
+}
+#im1{
+    height: 300px;
+}
+button {
+    background-color: #9f4fa3;
+    border:none;
+    width: 30%;
+    height: 5% ;
+    color:white;
+    font-size: 100%;
+    font-family: "Times New Roman", Times, serif;
+  
+}
+
+input{
+    height: 4% ;
+    border:none;
+}
