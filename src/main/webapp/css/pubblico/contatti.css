@@ -1,11 +1,13 @@
 body {
-    background-color: rgb(119, 221, 119);
+    background-color: rgb(146, 181, 255);
     
     
 }
 main {
     margin-left: 2%;
     margin-right: 50%;
+    margin-top:0%;
+    
     font-size: 150%;
     font-family: "Times New Roman", Times, serif;
     border:none;
@@ -23,7 +25,8 @@ img {
     height: 300px;
 }
 button {
-    background-color: #9f4fa3;
+    margin-top: 1em;
+    background-color: rgb(12, 12, 83);
     border:none;
     width: 30%;
     height: 5% ;
