@@ -1,18 +1,13 @@
-body {
-    background-color: rgb(172, 149, 149);
-    padding: 16px;
-    margin-left: 200px;
-    
-}
+
 main {
     
     
         margin-left:30%;
         margin-right:30%;
-        background-color: rgba(165, 42, 42, 0.61);
+        margin-top:5%;
+        background-color: rgb(146, 181, 255);
         padding: 10px;
         text-align: center;
-        color:white;
         line-height: 300% ;
         overflow-wrap: break-word;
         font-size: 150%;
@@ -23,7 +18,7 @@ main {
 
 
 button {
-    background-color: rgb(172, 149, 149);
+    background-color: rgb(12, 12, 83);
     border:none;
     width: 30%;
     height: 5% ;
