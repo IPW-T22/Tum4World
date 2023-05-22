@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Tum4World - Aderente</title>
+    <link rel="stylesheet" href="../css/privato/aderente.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
