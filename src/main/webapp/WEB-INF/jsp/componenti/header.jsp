@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../../css/componenti/header.css">
+</head>
 <header>
     <h1>Tum4World</h1>
     <div>

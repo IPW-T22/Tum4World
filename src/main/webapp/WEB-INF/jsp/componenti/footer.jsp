@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
+<head>
+    <link rel="stylesheet" type="text/css" href="../../../css/componenti/footer.css">
+</head>
 <footer>
     <script type="text/javascript"> <%@ include file="../../../js/cookieScript.js" %> </script>
     <%
