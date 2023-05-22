@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Tum4World - Amministratore</title>
-    <link rel="stylesheet" href="../../css/privato/aderente.css">
+    <link rel="stylesheet" href="../../css/privato/amministratore.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
