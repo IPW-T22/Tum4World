@@ -2,12 +2,15 @@
 
 <head>
     <title>Tum4World - Simpatizzante</title>
+    <link rel="stylesheet" href="../../css/privato/simpatizzante.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
 
     <div>
         <nav>
+            <br>
+            <br>
             <button id="bottone_dati_personali">Dati Personali</button>
             <button id="bottone_iscrizioni">Iscrizioni</button>
             <button id="bottone_elimina_profilo">Elimina Profilo</button>
