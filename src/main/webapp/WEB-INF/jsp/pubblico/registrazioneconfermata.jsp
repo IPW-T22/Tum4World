@@ -8,6 +8,7 @@
 <body>
     <jsp:include page="../componenti/header.jsp"/>
     <main>
+        <br>
         <h1>Conferma registrazione</h1>
         <p>La registrazione è avvenuta con successo. </p>
     </main>
