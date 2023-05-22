@@ -2,11 +2,14 @@
 <html>
 <head>
     <title>Tum4World - Amministratore</title>
+    <link rel="stylesheet" href="../../css/privato/aderente.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
 
     <nav>
+        <br>
+        <br>
         <button id="bottone_utenti_registrati">Utenti Registrati</button>
         <button id="bottone_simpatizzanti">Simpatizzanti</button>
         <button id="bottone_aderenti">Aderenti</button>
