@@ -8,6 +8,8 @@
     <jsp:include page="../componenti/header.jsp"/>
 
     <nav>
+        <br>
+        <br>
         <button id="bottone_dati_personali">Dati Personali</button>
         <button id="bottone_iscrizioni">Iscrizioni</button>
         <button id="bottone_elimina_profilo">Elimina Profilo</button>
