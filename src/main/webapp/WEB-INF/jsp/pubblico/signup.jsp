@@ -3,8 +3,8 @@
 <head>
     <title>Tum4World - Sign Up</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/pubblico/signup.css">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/signup.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>

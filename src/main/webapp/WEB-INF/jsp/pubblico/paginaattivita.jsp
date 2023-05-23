@@ -3,7 +3,7 @@
 <head>
     <title>Tum4World - Lista attivita</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>

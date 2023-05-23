@@ -3,13 +3,13 @@
 <head>
     <title>Tum4World - Chi Siamo</title>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
     <main>
         <div>
-            <img src="logo.jpg" alt="Logo dell'associazione">
+            <img src="${pageContext.request.contextPath}/images/logo.jpg" alt="Logo dell'associazione">
         </div>
         <h1>Chi siamo?</h1>
         <p>Tum4World è un'organizzazione globale senza scopo di lucro che mira a promuovere lo sviluppo sostenibile e la tutela dell'ambiente, sensibilizzando la popolazione mondiale e collaborando con altre organizzazioni a livello globale per raggiungere il comune obiettivo di creare un mondo migliore per le future generazioni.</p>
@@ -20,10 +20,10 @@
         <p>Negli anni successivi, i fondatori hanno lavorato duramente per dare vita a Tum4World, affrontando sfide e superando ostacoli per creare un'organizzazione di successo. Hanno definito la missione dell'associazione, elaborato un piano strategico e iniziato a stabilire una rete di contatti e collaborazioni con altre organizzazioni ambientaliste a livello globale.</p>
         <div>
             <div>
-                <img src="fondatore_1.jpg" alt="fondatore_1">
+                <img src="${pageContext.request.contextPath}/images/fondatore_1.jpg" alt="fondatore_1">
             </div>
             <div>
-                <img src="fondatore_2.jpg" alt="fondatore_2">
+                <img src="${pageContext.request.contextPath}/images/fondatore_2.jpg" alt="fondatore_2">
             </div>
         </div>
 

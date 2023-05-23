@@ -2,7 +2,7 @@
 
 <head>
     <title>Tum4World - Simpatizzante</title>
-    <link rel="stylesheet" href="../../css/privato/simpatizzante.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/simpatizzante.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
