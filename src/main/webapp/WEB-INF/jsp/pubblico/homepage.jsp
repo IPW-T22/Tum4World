@@ -3,7 +3,7 @@
 <head>
     <title>Tum4World - Home page</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/homepage.css">
+    <!--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/homepage.css"> -->
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 </head>
 <body>
@@ -11,7 +11,6 @@
     <main>
         <div>
             <img src="${pageContext.request.contextPath}/images/logo.jpg" alt="Logo dell'associazione">
-        </div>
         <h1>Benvenuti nell'Associazione Tum4World</h1>
         <div>
             <img id="im1" src="${pageContext.request.contextPath}/images/immagine_rappresentativa.jpg" alt="Immagine rappresentativa dell'associazione">

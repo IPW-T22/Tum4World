@@ -4,23 +4,17 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
 public class Utente implements Serializable {
 
     public enum Ruolo {
-        SIMPATIZZANTE(1),
-        ADERENTE(2),
-        AMMINISTRATORE(3);
-
-        private int value;
-        private Ruolo(int value) {
-            this.value = value;
-        }
-        public int getValue() {
-            return value;
-        }
+        SIMPATIZZANTE,
+        ADERENTE,
+        AMMINISTRATORE
     }
     private String nome = "null";
     private String cognome = "null";
@@ -133,34 +127,30 @@ public class Utente implements Serializable {
         return null;
     }
 
-    public void setUser(Utente user){
-        this.nome = user.getNome();
-        this.cognome = user.getCognome();
-        this.token = user.getToken();
-        this.email = user.getToken();
-        this.telefono = user.getTelefono();
-        this.ruolo = user.getRuolo();
-        this.username = user.getUsername();
-        this.dataDiNascita = user.getDataDiNascita();
-        this.hashPassword = user.getHashPassword();
-    }
-
-    public void populateUser(String username){
-        Utente user = DB.getUserFromUsername(username);
-        if(user!=null)
-            setUser(user);
+    public void setUser(String nome, String cognome, String email, String telefono, String username, String password, String dataDiNascita, Utente.Ruolo ruolo) {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.token = token;
+        this.email = email;
+        this.telefono = telefono;
+        this.ruolo = ruolo;
+        this.username = username;
+        try {
+            this.dataDiNascita = new SimpleDateFormat("dd-MM-yyyy").parse(dataDiNascita);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        this.hashPassword = hashPassword;
     }
 
     //fa efettuare il login
     public boolean login(HttpServletRequest request, String username, String hashPassword){
         HttpSession session = null;
-        Utente user = DB.getUserFromUsername(username);
         String cookieAcceptedVal = get_value_from_cookie("cookieAccepted", request);
-        //se il login è corretto
-        if (username.equals(user.getUsername()) && hashPassword.equals(user.getHashPassword())) {
+        if (this.username.equals(username) && this.hashPassword.equals(hashPassword)) {
             if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
                 session = request.getSession();
-                session.setAttribute("BeanUtente", user);
+                session.setAttribute("BeanUtente", this);
             }
             else{
                 Random random = new Random();
@@ -173,16 +163,15 @@ public class Utente implements Serializable {
         return false;
     }
 
-    public boolean signUp(HttpServletRequest request, String nome, String cognome, Date dataDiNascita, String email, String telefono, Utente.Ruolo ruolo, String username, String hashPassword){
+    public boolean signUp(HttpServletRequest request, String nome, String cognome, String email, String telefono, String username, String password, String dataDiNascita, int ruolo){
         HttpSession session = null;
-        Utente user = DB.getUserFromUsername("username");
-        if(false)
+        if(DB.getUserFromUsername(username)!=null)
             return false;
-        setUser(user);
-        DB.signUp(user);
+        DB.signUp(nome, cognome, email, telefono, username, password, dataDiNascita, ruolo);
+        setUser(nome, cognome, email, telefono, username, password, dataDiNascita, Utente.Ruolo.values()[ruolo]);
         if(request.getParameter("cookieAccepted")!=null) {
             session = request.getSession();
-            session.setAttribute("utente", user);
+            session.setAttribute("BeanUtente", this);
         }
         else{
             Random random = new Random();

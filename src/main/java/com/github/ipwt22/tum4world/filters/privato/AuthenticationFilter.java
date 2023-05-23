@@ -30,6 +30,7 @@ public class AuthenticationFilter implements Filter {
             request.setAttribute("utente", utente);
             chain.doFilter(request,response);
         } catch (Exception e) {
+            e.printStackTrace();
             request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
         }
     }

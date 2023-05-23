@@ -3,26 +3,21 @@ body {
     
 }
 main {
-    margin-left: 20%;
-    margin-right: 20%;
+    margin: 0px;
+    padding: 0px;
     text-align: center;
     font-size: 150%;
     font-family: "Times New Roman", Times, serif;
-    
-
 }
 div {
     margin:auto;
-    
 }
 
 img {
     height: 150px;
-    
 }
 #im1{
     height: 300px;
-    
 }
 button {
     margin-top:1em;
@@ -33,5 +28,4 @@ button {
     color:white;
     font-size: 100%;
     font-family: "Times New Roman", Times, serif;
-  
 }

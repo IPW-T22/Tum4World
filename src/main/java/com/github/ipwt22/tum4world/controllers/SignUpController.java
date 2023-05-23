@@ -18,12 +18,7 @@ public class SignUpController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nome = request.getParameter("nome");
         String cognome = request.getParameter("cognome");
-        Date dataDiNascita = null;
-        try {
-            dataDiNascita = new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("data_nascita"));
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+        String dataDiNascita = request.getParameter("data_nascita");
         String email = request.getParameter("email");
         String telefono = request.getParameter("telefono");
         Utente.Ruolo ruolo = Utente.Ruolo.SIMPATIZZANTE;
@@ -33,7 +28,7 @@ public class SignUpController extends HttpServlet {
         String hashPassword = request.getParameter("password");
 
         Utente user = new Utente();
-        if(user.signUp(request, nome, cognome, dataDiNascita, email, telefono, ruolo, username, hashPassword))
+        if(user.signUp(request, nome, cognome, email, telefono, username, hashPassword, dataDiNascita, ruolo.ordinal()))
             response.sendRedirect("registrazioneconfermata?token="+user.getToken());
         else
             response.sendRedirect("signup?error=true");

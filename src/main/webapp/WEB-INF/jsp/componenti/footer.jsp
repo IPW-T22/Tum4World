@@ -15,13 +15,11 @@
             }
         if(cookieAcceptedVal==null){
     %>
-            <%@ include file="cookie_banner.html" %>
+            <jsp:include page="../componenti/cookie_banner.jsp"/>
     <% } %>
 
 
-    <div>
-        <br>
+    <div id="div_footer">
         <h4>Contatti</h4>
-
     </div>
 </footer>

@@ -1,8 +1,5 @@
-div{
+#div_footer{
     background-color: rgb(12, 12, 83);
     color:white;
     height: 4em;
-    font-size: 150%;
-    line-height: 50%;
-
 }

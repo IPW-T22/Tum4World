@@ -3,8 +3,8 @@ package com.github.ipwt22.tum4world.models;
 import java.io.Serializable;
 
 public class Attivita implements Serializable {
-    private String nome;
-    private String urlImmagine;
+    private String nome = "null";
+    private String urlImmagine = "null";
 
     public String getNome() {
         return nome;

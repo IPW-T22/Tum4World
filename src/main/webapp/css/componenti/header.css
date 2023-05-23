@@ -1,37 +1,33 @@
 ul {
     background-color: rgb(12, 12, 83);
     text-align: center;
-    margin-left: 5%;
-    margin-right: 5%;
-    
 }
-  
-  
+
 li {
     display: inline-block;
-    font-size: 200%;
-    margin-right:3em;
-    
 }
 
+li a{
+    display: block;
+    text-decoration: none;
+    padding: 16px;
+    color:white;
+}
 
-header{
-    background-color: rgb(146, 181, 255) ;
-    
-  }
+#div_header{
+    display: flow;
+    background-color: rgb(146, 181, 255);
+    padding: 0;
+    margin:0;
+}
 
-h1{
+#titolo_sito{
     text-align: center;
-    font-size: 275%;
     background-color: rgb(146, 181, 255) ;
+    font-family: Arial;
 }
+
 span{
     text-align: center;
-    font-size: 150%;
-    
 }
-a {
-    text-decoration: none;
-    color:white;
-    
-  }
+

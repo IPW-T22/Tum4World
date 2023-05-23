@@ -1,5 +1,6 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
@@ -15,14 +16,12 @@ public class LoginController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String username = request.getParameter("username");
         String hashPassword = request.getParameter("hashPassword");
-        Utente user = new Utente();
-        if(user.login(request, username, hashPassword)) {
+        Utente user = DB.getUserFromUsername(username);
+        if(user!=null && user.login(request, username, hashPassword)) {
             response.sendRedirect("dashboard?token=" + user.getToken());
-            System.out.println("NON C'È ERRORE");
         }
         else {
             response.sendRedirect("login?error=true");
-            System.out.println("CI DOVREBBE ESSERE ERRORE");
         }
     }
 }

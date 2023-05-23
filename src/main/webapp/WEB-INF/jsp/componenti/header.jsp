@@ -1,15 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
+<%
+    HttpSession session = request.getSession(false);
+    String token = request.getParameter("token");
+%>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/componenti/header.css">
 </head>
 <header>
-    <h1>Tum4World</h1>
-    <div>
+
+    <div id="div_header">
+        <h1 id="titolo_sito">Tum4World</h1>
         <ul>
-            <%
-                HttpSession session = request.getSession(false);
-                String token = request.getParameter("token");
-            %>
             <li><a href="${pageContext.request.contextPath}/">Home</a></li>
             <li><a href="chisiamo">Chi siamo</a></li>
             <li><a href="attivita">Attività</a></li>
@@ -24,6 +25,6 @@
                 <li><a href="dashboard">Dashboard</a></li>
             <% } %>
         </ul>
+        <span><p>Citazione: </p></span>
     </div>
-    <span><p>Citazione: </p></span>
 </header>
