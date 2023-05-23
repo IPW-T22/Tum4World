@@ -8,10 +8,19 @@ import java.util.Date;
 import java.util.Random;
 
 public class Utente implements Serializable {
+
     public enum Ruolo {
-        SIMPATIZZANTE,
-        ADERENTE,
-        AMMINISTRATORE
+        SIMPATIZZANTE(1),
+        ADERENTE(2),
+        AMMINISTRATORE(3);
+
+        private int value;
+        private Ruolo(int value) {
+            this.value = value;
+        }
+        public int getValue() {
+            return value;
+        }
     }
     private String nome = "null";
     private String cognome = "null";

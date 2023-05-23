@@ -1,9 +1,9 @@
 package com.github.ipwt22.tum4world.models;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,13 +12,15 @@ public class DB {
     private static Connection conn;
     private static Statement stmt;
 
+    private static PreparedStatement prepStmt;
+
     static {
         try {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tum4world", "App", "Password");
             stmt = conn.createStatement();
-
             creaTabelle();
+
 
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -28,17 +30,16 @@ public class DB {
     private static void creaTabelle() {
         try {
             stmt.executeUpdate("CREATE TABLE utenti (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
+                    "token VARCHAR(255) NOT NULL," +
                     "nome VARCHAR(255) NOT NULL," +
                     "cognome VARCHAR(255) NOT NULL," +
                     "email VARCHAR(255) NOT NULL," +
                     "telefono VARCHAR(255) NOT NULL," +
                     "username VARCHAR(255) NOT NULL," +
                     "password VARCHAR(255) NOT NULL," +
-                    "data_di_nascita DATE NOT NULL," +
-                    "ruolo VARCHAR(255) NOT NULL," +
-                    "PRIMARY KEY (id)," +
-                    "UNIQUE (username)" +
+                    "data_di_nascita VARCHAR(255) NOT NULL," +
+                    "ruolo INTEGER NOT NULL," +
+                    "PRIMARY KEY (username)" +
                     ")");
         } catch (SQLException ignored) {
         }
@@ -92,17 +93,6 @@ public class DB {
                     ")");
         } catch (SQLException ignored) {
         }
-        try {
-            stmt.executeUpdate("CREATE TABLE token (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "utente_id INTEGER NOT NULL," +
-                    "token VARCHAR(255) NOT NULL," +
-                    "PRIMARY KEY (id)," +
-                    "FOREIGN KEY (utente_id) REFERENCES utenti(id)" +
-                    ")");
-        } catch (SQLException ignored) {
-        }
-
     }
     //settings per il database
 
@@ -111,9 +101,37 @@ public class DB {
         return true;
     }
 
-    public static Utente getUserFromUsername(String username) {
-        Utente user = new Utente();
+    private static void setUtenteFromResultSet(Utente user, ResultSet resultSet) throws SQLException {
+        if (resultSet.isBeforeFirst()) { //se la query non ha restituito niente
+            Date dataDiNascita = null;
+            try {
+                dataDiNascita = new SimpleDateFormat("dd-MM-yyyy").parse(resultSet.getString("dataDiNascita"));
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            user.setNome(resultSet.getString("nome"));
+            user.setCognome(resultSet.getString("cognome"));
+            user.setUsername(resultSet.getString("username"));
+            user.setHashPassword(resultSet.getString("password"));
+            user.setRuolo(Utente.Ruolo.values()[resultSet.getInt("ruolo")]);
+            user.setEmail(resultSet.getString("email"));
+            user.setTelefono(resultSet.getString("telefono"));
+            user.setDataDiNascita(dataDiNascita);
+        }
+    }
 
+    public static Utente getUserFromUsername(String username) {
+        String sql = "SELECT * FROM Utenti WHERE username = ?;";
+        Utente user = null;
+        try {
+            prepStmt = conn.prepareStatement(sql);
+            prepStmt.setString(1, username);
+            ResultSet resultSet = prepStmt.executeQuery();
+            setUtenteFromResultSet(user, resultSet);
+            prepStmt.close();
+            resultSet.close();
+        }
+        catch (SQLException e){}
         return user;
     }
 
@@ -125,28 +143,39 @@ public class DB {
      */
     public static Utente getUserFromToken(String token) throws Exception {
         if (token == null) throw new Exception("token is null");
-
-        Utente utente = new Utente();
-        utente.setNome("Mario");
-        utente.setCognome("Rossi");
-        utente.setEmail("mario.rossi@esempio.com");
-        utente.setTelefono("0123456789");
-        utente.setUsername("mario.rossi");
-        utente.setDataDiNascita(new Date());
-        utente.setRuolo(Utente.Ruolo.AMMINISTRATORE);
-
-        return utente;
+        String sql = "SELECT * FROM Utenti WHERE token = ?;";
+        Utente user = null;
+        prepStmt = conn.prepareStatement(sql);
+        prepStmt.setString(1, token);
+        ResultSet resultSet = prepStmt.executeQuery();
+        setUtenteFromResultSet(user, resultSet);
+        prepStmt.close();
+        resultSet.close();
+        return user;
     }
 
-    public static boolean setKeyOfUser(String username, String key) {
-
+    public static boolean setKeyOfUser(String username, String token) {
+        String sql = "UPDATE Utenti SET token = ? WHERE username = ?;";
+        try {
+            prepStmt = conn.prepareStatement(sql);
+            prepStmt.setString(1, token);
+            prepStmt.setString(2, username);
+            prepStmt.executeQuery();
+            prepStmt.close();
+        }
+        catch (SQLException e){}
         return true;
     }
 
 
     public static Citazione getRandomCitazione() {
+        String sql = "SELECT * FROM Citazioni ORDER BY RAND() LIMIT 1;";
         Citazione citazione = new Citazione();
-        citazione.setCitazione("LASCIATE OGNI SPERANZA A VOI CHE ENTRATE");
+        try {
+            ResultSet resultSet = stmt.executeQuery(sql);
+            citazione.setCitazione(resultSet.getString("citazione"));
+        }
+        catch (SQLException e){}
         return citazione;
     }
 

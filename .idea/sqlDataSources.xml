@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="10f45402-ae27-4483-a25d-f76b2660d417" name="MyApp Mapping">
+      <data-sources db="49ae3a0c-6f44-4283-93d4-2cc02bf8a1f7" ddl="f568d688-1f42-4e8f-8854-51ce8c1c6101" />
+      <scope>
+        <node negative="1">
+          <node kind="database" negative="1" />
+          <node kind="schema">
+            <name qname="APP" />
+            <name qname="NULLID" />
+            <name qname="SQLJ" />
+            <name qname="SYS" />
+            <name qname="SYSCAT" />
+            <name qname="SYSCS_DIAG" />
+            <name qname="SYSCS_UTIL" />
+            <name qname="SYSFUN" />
+            <name qname="SYSIBM" />
+            <name qname="SYSPROC" />
+            <name qname="SYSSTAT" />
+          </node>
+        </node>
+      </scope>
+    </mapping>
+  </component>
+</project>
