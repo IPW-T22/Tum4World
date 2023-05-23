@@ -1,5 +1,6 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import javax.servlet.RequestDispatcher;
@@ -15,13 +16,15 @@ public class DashboardController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         RequestDispatcher dispatcher = null;
-        if (utente.getRuolo() == Utente.Ruolo.SIMPATIZZANTE)
+        if (utente.getRuolo() == Utente.Ruolo.SIMPATIZZANTE) {
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/privato/simpatizzante.jsp");
-        else if (utente.getRuolo() == Utente.Ruolo.ADERENTE)
+        }else if (utente.getRuolo() == Utente.Ruolo.ADERENTE) {
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/privato/aderente.jsp");
-        else if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE)
+        }else if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
+            request.setAttribute("donazioni", DB.getDonazioni());
+            request.setAttribute("utenti", DB.getUtenti());
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/privato/amministratore.jsp");
-
+        }
         assert dispatcher != null;
 
         dispatcher.forward(request, response);

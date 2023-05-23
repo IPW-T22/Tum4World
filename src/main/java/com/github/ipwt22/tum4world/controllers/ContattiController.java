@@ -14,6 +14,7 @@ public class ContattiController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/contatti.jsp").forward(request, response);
     }
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String nome = request.getParameter("nome");
         String cognome = request.getParameter("cognome");

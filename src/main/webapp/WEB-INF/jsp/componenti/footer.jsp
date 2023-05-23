@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/componenti/footer.css">
 </head>
 <footer>
-    <script type="text/javascript" src="/js/cookieScript.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookieScript.js"></script>
     <%
         String cookieAcceptedVal = null;
         Cookie[] cookies =  request.getCookies();

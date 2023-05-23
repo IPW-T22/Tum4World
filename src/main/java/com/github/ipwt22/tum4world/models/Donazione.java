@@ -6,7 +6,7 @@ import java.util.Date;
 public class Donazione implements Serializable {
     private Date data;
     private Utente utente;
-    private int amount;
+    private double importo;
 
     public Donazione() {
     }
@@ -27,11 +27,11 @@ public class Donazione implements Serializable {
         this.utente = utente;
     }
 
-    public int getAmount() {
-        return amount;
+    public double getImporto() {
+        return importo;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setImporto(double importo) {
+        this.importo = importo;
     }
 }

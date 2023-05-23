@@ -9,8 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 public class DB {
-    private static Connection conn;
-    private static Statement stmt;
+    private static final Connection conn;
+    private static final Statement stmt;
 
     private static PreparedStatement prepStmt;
 
@@ -190,8 +190,29 @@ public class DB {
         return true;
     }
 
+    /**
+     * Preleva tutte le donazioni
+     *
+     * @return lista di donazioni
+     */
     public static List<Donazione> getDonazioni() {
-        return new ArrayList<>();
+        List<Donazione> donazioni = new ArrayList<>();
+        String sql = "SELECT * FROM Donazioni;";
+        try {
+            ResultSet resultSet = stmt.executeQuery(sql);
+            while (resultSet.next()) {
+                Donazione donazione = new Donazione();
+                donazione.setImporto(resultSet.getDouble("importo"));
+                donazione.setData(resultSet.getDate("data"));
+                donazioni.add(donazione);
+            }
+        }
+        catch (SQLException e){}
+        return donazioni;
+    }
+
+    public static List<Utente> getUtenti(){
+        return null;
     }
 
     public static void addDonation(Utente utente, int amount) {

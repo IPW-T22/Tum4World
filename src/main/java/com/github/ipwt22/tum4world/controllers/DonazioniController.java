@@ -4,12 +4,9 @@ import argo.format.JsonFormatter;
 import argo.format.PrettyJsonFormatter;
 import argo.jdom.JsonNode;
 import argo.jdom.JsonNodeFactories;
-import com.github.ipwt22.tum4world.models.Contatori;
 import com.github.ipwt22.tum4world.models.DB;
-import com.github.ipwt22.tum4world.models.Donazione;
 import com.github.ipwt22.tum4world.models.Utente;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +33,7 @@ public class DonazioniController extends HttpServlet {
                     .filter((donazione -> donazione.getData().getYear() == anno))
                     .forEach(donazione -> {
                         int mese = donazione.getData().getMonth();
-                        donazioni[mese] += donazione.getAmount();
+                        donazioni[mese] += donazione.getImporto();
                     });
 
             JsonNode json = array(Arrays.stream(donazioni)
