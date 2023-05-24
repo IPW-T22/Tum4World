@@ -79,7 +79,10 @@ public class DB {
                     "PRIMARY KEY (id)" +
                     ")");
             stmt.executeUpdate("INSERT INTO utenti (token, nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) " +
-                    "VALUES ('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'admin', '22Adm1n!', '29-10-2022', 0)"
+                    "VALUES ('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'admin', '22Adm1n!', '29-10-2022', 2)" +
+                    ",('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'amministratore', 'amministratore', '29-10-2022', 2)" +
+                    ",('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'aderente', 'aderente', '29-10-2022', 1)" +
+                    ",('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'simpatizzante', 'simpatizzante', '29-10-2022', 0)"
             );
             stmt.executeUpdate("INSERT INTO citazioni (testo, autore) VALUES " +
                     "('Il volontariato è l’arte di mettere il proprio cuore dove gli altri hanno bisogno di esso.', 'Autori vari'), " +
