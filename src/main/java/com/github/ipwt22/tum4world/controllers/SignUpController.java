@@ -1,5 +1,7 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
+import com.github.ipwt22.tum4world.helpers.UtenteHelper;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
@@ -25,11 +27,25 @@ public class SignUpController extends HttpServlet {
         if(request.getParameter("tipo_registrazione").equals("ADERENTE"))
             ruolo = Utente.Ruolo.ADERENTE;
         String username = request.getParameter("username");
-        String hashPassword = request.getParameter("password");
+        String password = request.getParameter("password");
+        HttpSession session = null;
+        String cookieAcceptedVal = UtenteHelper.get_value_from_cookie("cookieAccepted", request);
+        String token;
 
-        Utente user = new Utente();
-        if(false /*user.signUp(request, nome, cognome, email, telefono, username, hashPassword, dataDiNascita, ruolo.ordinal())*/)
-            response.sendRedirect("registrazioneconfermata?token=") /*+user.getToken())*/;
+        Utente user = UtenteHelper.fromUsername(DatabaseHelper.getConnection(), username);
+        if(user==null) {
+            user = new Utente();
+            user.setUser(nome, cognome, email, telefono, username, password, dataDiNascita, ruolo);
+            token = UtenteHelper.generateUniqueToken(username);
+            if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
+                session = request.getSession();
+                session.setAttribute("BeanUtente", user);
+                session.setAttribute("token", token);
+            }
+            UtenteHelper.registerUser(DatabaseHelper.getConnection(), user);
+            UtenteHelper.setKeyOf(DatabaseHelper.getConnection(), username, token);
+            response.sendRedirect("registrazioneconfermata?token="+token);
+        }
         else
             response.sendRedirect("signup?error=true");
     }

@@ -1,4 +1,4 @@
-<%@ page import="com.github.ipwt22.tum4world.models.Utente" %>
+<%@ page import="com.github.ipwt22.tum4world.models.Utente"  session="false" %>
 <% Utente[] utenti = {new Utente(), new Utente(), new Utente()}; %>
 
 <section id="utenti_registrati">

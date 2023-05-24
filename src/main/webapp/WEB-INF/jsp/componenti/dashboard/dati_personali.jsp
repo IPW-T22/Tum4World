@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" session="false"%>
 <jsp:useBean id="utente" class="com.github.ipwt22.tum4world.models.Utente" scope="request"/>
 <section id="dati_personali">
     <h2>Dati Personali</h2>

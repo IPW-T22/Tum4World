@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" session="false"%>
 <%@ page import="com.github.ipwt22.tum4world.models.Utente" %>
 <% Utente[] utenti = {new Utente(), new Utente(), new Utente()}; %>
 

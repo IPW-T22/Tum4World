@@ -1,5 +1,7 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
+import com.github.ipwt22.tum4world.helpers.UtenteHelper;
 import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
@@ -12,8 +14,13 @@ import javax.servlet.annotation.*;
 public class LogoutController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
-            Utente user = DB.getUserFromToken(request.getParameter("token"));
-            /*user.logout(request);*/
+            HttpSession session = request.getSession(false);
+            String token = request.getParameter("token");
+            String username = token.substring(0, token.indexOf(":"));
+
+            UtenteHelper.deleteTokenOfUsername(DatabaseHelper.getConnection(), username, token);
+            if (session!=null)
+                session.invalidate();
         } catch (Exception ignored) {}
         response.sendRedirect("homepage?token");
     }

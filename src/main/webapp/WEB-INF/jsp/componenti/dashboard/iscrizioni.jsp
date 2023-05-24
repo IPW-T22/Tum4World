@@ -1,4 +1,4 @@
-<%@ page import="com.github.ipwt22.tum4world.models.Attivita" %>
+<%@ page import="com.github.ipwt22.tum4world.models.Attivita" session="false" %>
 <%@ page import="com.github.ipwt22.tum4world.models.Utente" %>
 <jsp:useBean id="utente" class="com.github.ipwt22.tum4world.models.Utente" scope="request"/>
 <% Attivita[] attivita = {new Attivita(), new Attivita(), new Attivita()}; %>

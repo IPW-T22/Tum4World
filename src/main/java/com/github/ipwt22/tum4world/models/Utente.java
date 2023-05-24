@@ -104,20 +104,6 @@ public class Utente implements Serializable {
         this.password = password;
     }
 
-
-    private String get_value_from_cookie(String name, HttpServletRequest request){
-        Cookie[] cookies =  request.getCookies();
-        if(cookies != null){
-            for(Cookie c : cookies){
-                String nameCookie = c.getName();
-                if(nameCookie.equals(name)){
-                    return c.getValue();
-                }
-            }
-        }
-        return null;
-    }
-
     public void setUser(String nome, String cognome, String email, String telefono, String username, String password, String dataDiNascita, Utente.Ruolo ruolo) {
         this.nome = nome;
         this.cognome = cognome;
@@ -132,52 +118,6 @@ public class Utente implements Serializable {
         }
         this.password = password;
     }
-/*
-    //fa efettuare il login
-    public boolean login(HttpServletRequest request, String username, String hashPassword){
-        HttpSession session = null;
-        String cookieAcceptedVal = get_value_from_cookie("cookieAccepted", request);
-        if (this.username.equals(username) && this.password.equals(hashPassword)) {
-            if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
-                session = request.getSession();
-                session.setAttribute("BeanUtente", this);
-            }
-            else{
-                Random random = new Random();
-                token = username + ":" + random.nextInt( 100000);
-                System.out.println(token);
-                DB.setKeyOfUser(username, token);
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public boolean signUp(HttpServletRequest request, String nome, String cognome, String email, String telefono, String username, String password, String dataDiNascita, int ruolo){
-        HttpSession session = null;
-        if(DB.getUserFromUsername(username)!=null)
-            return false;
-        DB.signUp(nome, cognome, email, telefono, username, password, dataDiNascita, ruolo);
-        setUser(nome, cognome, email, telefono, username, password, dataDiNascita, Utente.Ruolo.values()[ruolo]);
-        if(request.getParameter("cookieAccepted")!=null) {
-            session = request.getSession();
-            session.setAttribute("BeanUtente", this);
-        }
-        else{
-            Random random = new Random();
-            token = username + ":" + random.nextInt(100000);
-            DB.setKeyOfUser(username, token);
-        }
-        return true;
-    }
-    public void logout(HttpServletRequest request){ //l'utente corrente effettua il logout
-        HttpSession session = request.getSession (false);
-        if (session!=null)
-            session.invalidate();
-        token = "null";
-        DB.setKeyOfUser(username, token);
-    }*/
-
     /**
      * Verifica se l'utente è iscritto all'attività.
      * @param utente
