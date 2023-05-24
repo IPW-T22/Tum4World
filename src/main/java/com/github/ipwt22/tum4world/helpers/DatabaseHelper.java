@@ -9,8 +9,10 @@ public class DatabaseHelper {
 
     public static Connection getConnection() {
         try {
-            if(connection == null || connection.isClosed()) throw new Exception();
+            if(connection == null) throw new Exception("Connection is null");
+            if(connection.isClosed()) throw new Exception("Connection is closed");
         } catch (Exception e) {
+            System.err.println(e.getMessage());
             connection = connetti();
         }
         return connection;
@@ -30,5 +32,9 @@ public class DatabaseHelper {
     private static void init(Connection conn){
         CitazioneHelper.init(conn);
         ContatoreHelper.init(conn);
+        UtenteHelper.init(conn);
+        DonazioneHelper.init(conn);
+        AttivitaHelper.init(conn);
+        IscrizioneHelper.init(conn);
     }
 }

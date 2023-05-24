@@ -13,7 +13,7 @@ public class LogoutController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
             Utente user = DB.getUserFromToken(request.getParameter("token"));
-            user.logout(request);
+            /*user.logout(request);*/
         } catch (Exception ignored) {}
         response.sendRedirect("homepage?token");
     }

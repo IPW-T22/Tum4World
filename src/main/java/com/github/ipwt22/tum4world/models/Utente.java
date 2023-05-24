@@ -132,7 +132,7 @@ public class Utente implements Serializable {
         }
         this.password = password;
     }
-
+/*
     //fa efettuare il login
     public boolean login(HttpServletRequest request, String username, String hashPassword){
         HttpSession session = null;
@@ -176,7 +176,7 @@ public class Utente implements Serializable {
             session.invalidate();
         token = "null";
         DB.setKeyOfUser(username, token);
-    }
+    }*/
 
     /**
      * Verifica se l'utente è iscritto all'attività.

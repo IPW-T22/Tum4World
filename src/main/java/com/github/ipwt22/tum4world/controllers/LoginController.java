@@ -17,11 +17,11 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String hashPassword = request.getParameter("hashPassword");
         Utente user = DB.getUserFromUsername(username);
-        if(user!=null && user.login(request, username, hashPassword)) {
+        /*if(user!=null && user.login(request, username, hashPassword)) {
             response.sendRedirect("dashboard?token=" + user.getToken());
         }
         else {
             response.sendRedirect("login?error=true");
-        }
+        }*/
     }
 }

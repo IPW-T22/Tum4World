@@ -11,7 +11,7 @@ public class Citazione implements Serializable {
 
     // ATRIBUTI
     private int id;
-    private String citazione;
+    private String testo;
     private String autore;
 
     // GETTER e SETTER
@@ -24,12 +24,12 @@ public class Citazione implements Serializable {
         this.id = id;
     }
 
-    public String getCitazione() {
-        return citazione;
+    public String getTesto() {
+        return testo;
     }
 
-    public void setCitazione(String citazione) {
-        this.citazione = citazione;
+    public void setTesto(String testo) {
+        this.testo = testo;
     }
 
     public String getAutore() {
@@ -44,7 +44,7 @@ public class Citazione implements Serializable {
     @Override
     public String toString() {
         return "Citazione{" +
-                "citazione='" + citazione + '\'' +
+                "testo='" + testo + '\'' +
                 ", autore='" + autore + '\'' +
                 '}';
     }

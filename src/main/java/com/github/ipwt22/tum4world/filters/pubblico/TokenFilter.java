@@ -32,7 +32,6 @@ public class TokenFilter implements Filter {
                         return;
                     }
                 }
-
             }
         }
         filterChain.doFilter(servletRequest, servletResponse); //proseguo alla risorsa/pagina

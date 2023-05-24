@@ -9,19 +9,11 @@ public class Contatore implements Serializable {
     }
 
     // ATTRIBUTI
-    private int id;
     private String percorso;
 
     private int visite;
 
     // GETTER e SETTER
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getPercorso() {
         return percorso;
@@ -43,7 +35,6 @@ public class Contatore implements Serializable {
     @Override
     public String toString() {
         return "Contatore{" +
-                "id=" + id +
                 ", percorso='" + percorso + '\'' +
                 ", visite=" + visite +
                 '}';

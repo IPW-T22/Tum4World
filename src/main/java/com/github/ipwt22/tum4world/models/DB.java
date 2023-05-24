@@ -2,11 +2,11 @@ package com.github.ipwt22.tum4world.models;
 
 import com.github.ipwt22.tum4world.helpers.CitazioneHelper;
 import com.github.ipwt22.tum4world.helpers.ContatoreHelper;
+import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
 
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,49 +20,17 @@ public class DB {
 
     static {
         try {
+            conn = DatabaseHelper.getConnection();
            stmt = conn.createStatement();
             creaTabelle();
 
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     private static void creaTabelle() {
-        try {
-
-            CitazioneHelper.init(conn);
-            stmt.executeUpdate("CREATE TABLE attivita (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "titolo VARCHAR(255) NOT NULL," +
-                    "descrizione VARCHAR(255) NOT NULL," +
-                    "immagine VARCHAR(255) NOT NULL," +
-                    "PRIMARY KEY (id)" +
-                    ")");
-            stmt.executeUpdate("CREATE TABLE iscrizioni (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "utente_id INTEGER NOT NULL," +
-                    "attivita_id INTEGER NOT NULL," +
-                    "PRIMARY KEY (id)," +
-                    "FOREIGN KEY (utente_id) REFERENCES utenti(id)," +
-                    "FOREIGN KEY (attivita_id) REFERENCES attivita(id)" +
-                    ")");
-            stmt.executeUpdate("CREATE TABLE donazioni (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "utente_id INTEGER NOT NULL," +
-                    "importo DECIMAL(10,2) NOT NULL," +
-                    "data DATE NOT NULL," +
-                    "PRIMARY KEY (id)," +
-                    "FOREIGN KEY (utente_id) REFERENCES utenti(id)" +
-                    ")");
-            ContatoreHelper.init(conn);
-
-
-            //admin -> 22Adm1n!
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
     //settings per il database
 
@@ -175,7 +143,7 @@ public class DB {
             resultSet = stmt.executeQuery(sql);
             for(int i=1;i<=index;++i)
                 resultSet.next();
-            citazione.setCitazione(resultSet.getString("testo"));
+            citazione.setTesto(resultSet.getString("testo"));
             citazione.setAutore(resultSet.getString("autore"));
         }
         catch (SQLException e){

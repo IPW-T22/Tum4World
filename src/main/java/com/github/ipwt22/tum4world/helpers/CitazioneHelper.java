@@ -1,7 +1,6 @@
 package com.github.ipwt22.tum4world.helpers;
 
 import com.github.ipwt22.tum4world.models.Citazione;
-import com.github.ipwt22.tum4world.models.Contatore;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +13,7 @@ public class CitazioneHelper {
     public static Citazione fromResultSet(ResultSet rs) throws SQLException {
         Citazione citazione = new Citazione();
         citazione.setId(rs.getInt("id"));
-        citazione.setCitazione(rs.getString("citazione"));
+        citazione.setTesto(rs.getString("testo"));
         citazione.setAutore(rs.getString("autore"));
         return citazione;
     }
@@ -31,7 +30,7 @@ public class CitazioneHelper {
 
     public static Citazione random(Connection conn) {
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA + " ORDER BY RAND() LIMIT 1");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA + " ORDER BY RANDOM() FETCH FIRST ROW ONLY");
             if (rs.next()) return fromResultSet(rs);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -56,7 +55,7 @@ public class CitazioneHelper {
     // INIZIALIZZAZIONE
     public static void init(Connection conn){
         try {
-            conn.createStatement().executeUpdate("CREATE TABLE citazioni (" +
+            conn.createStatement().executeUpdate("CREATE TABLE " + TABELLA + " (" +
                             "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                             "testo VARCHAR(255) NOT NULL," +
                             "autore VARCHAR(255) NOT NULL," +
@@ -84,7 +83,7 @@ public class CitazioneHelper {
                     "('Ogni uomo è colpevole di tutto il bene che non ha fatto.', 'Voltaire'), " +
                     "('Non basta fare del bene, bisogna anche farlo bene.', 'Denis Diderot')");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
         }
     }
 }

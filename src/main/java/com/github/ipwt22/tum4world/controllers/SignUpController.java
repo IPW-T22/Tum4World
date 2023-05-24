@@ -28,8 +28,8 @@ public class SignUpController extends HttpServlet {
         String hashPassword = request.getParameter("password");
 
         Utente user = new Utente();
-        if(user.signUp(request, nome, cognome, email, telefono, username, hashPassword, dataDiNascita, ruolo.ordinal()))
-            response.sendRedirect("registrazioneconfermata?token="+user.getToken());
+        if(false /*user.signUp(request, nome, cognome, email, telefono, username, hashPassword, dataDiNascita, ruolo.ordinal())*/)
+            response.sendRedirect("registrazioneconfermata?token=") /*+user.getToken())*/;
         else
             response.sendRedirect("signup?error=true");
     }
