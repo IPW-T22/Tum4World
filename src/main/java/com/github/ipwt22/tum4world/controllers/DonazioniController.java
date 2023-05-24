@@ -1,10 +1,7 @@
 package com.github.ipwt22.tum4world.controllers;
 
-import argo.format.JsonFormatter;
-import argo.format.PrettyJsonFormatter;
-import argo.jdom.JsonNode;
-import argo.jdom.JsonNodeFactories;
 import com.github.ipwt22.tum4world.models.DB;
+import com.github.ipwt22.tum4world.models.Donazione;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import javax.servlet.ServletException;
@@ -14,20 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.stream.Collectors;
-
-import static argo.jdom.JsonNodeFactories.array;
-import static argo.jdom.JsonNodeFactories.number;
 
 @WebServlet(name = "donazioni", value = "/donazioni")
 public class DonazioniController extends HttpServlet {
-    private static final JsonFormatter JSON_FORMATTER = new PrettyJsonFormatter();
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
             int anno = new Date().getYear();
-            int[] donazioni = {0,0,0,0,0,0,0,0,0,0,0,0};
+            int[] donazioni = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
             DB.getDonazioni()
                     .stream()
                     .filter((donazione -> donazione.getData().getYear() == anno))
@@ -36,15 +30,10 @@ public class DonazioniController extends HttpServlet {
                         donazioni[mese] += donazione.getImporto();
                     });
 
-            JsonNode json = array(Arrays.stream(donazioni)
-                    .mapToObj(JsonNodeFactories::number)
-                    .collect(Collectors.toList())
-            );
-
             try (PrintWriter out = response.getWriter()) {
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                out.print(JSON_FORMATTER.format(json));
+                out.print(Donazione.GSON.toJson(donazioni));
                 out.flush();
             }
         } else

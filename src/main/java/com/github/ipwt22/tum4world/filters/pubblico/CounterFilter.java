@@ -1,9 +1,6 @@
 package com.github.ipwt22.tum4world.filters.pubblico;
 
-import com.github.ipwt22.tum4world.models.Contatori;
-
 import javax.servlet.*;
-import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 

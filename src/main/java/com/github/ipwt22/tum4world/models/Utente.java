@@ -24,14 +24,12 @@ public class Utente implements Serializable {
     private Ruolo ruolo = Ruolo.SIMPATIZZANTE;
 
     private String username = "null";
-    private String hashPassword = "null";
-
-    private String token = "null";
+    private String password = "null";
 
     public Utente() {
     }
 
-    public Utente(String nome, String cognome, Date dataDiNascita, String email, String telefono, Ruolo ruolo, String username, String hashPassword) {
+    public Utente(String nome, String cognome, Date dataDiNascita, String email, String telefono, Ruolo ruolo, String username, String password) {
         this.nome = nome;
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
@@ -39,7 +37,7 @@ public class Utente implements Serializable {
         this.telefono = telefono;
         this.ruolo = ruolo;
         this.username = username;
-        this.hashPassword = hashPassword;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -98,21 +96,14 @@ public class Utente implements Serializable {
         this.ruolo = ruolo;
     }
 
-    public String getHashPassword() {
-        return hashPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHashPassword(String hashPassword) {
-        this.hashPassword = hashPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
 
     private String get_value_from_cookie(String name, HttpServletRequest request){
         Cookie[] cookies =  request.getCookies();
@@ -130,7 +121,6 @@ public class Utente implements Serializable {
     public void setUser(String nome, String cognome, String email, String telefono, String username, String password, String dataDiNascita, Utente.Ruolo ruolo) {
         this.nome = nome;
         this.cognome = cognome;
-        this.token = token;
         this.email = email;
         this.telefono = telefono;
         this.ruolo = ruolo;
@@ -140,14 +130,14 @@ public class Utente implements Serializable {
         }catch (ParseException e){
             e.printStackTrace();
         }
-        this.hashPassword = hashPassword;
+        this.password = password;
     }
 
     //fa efettuare il login
     public boolean login(HttpServletRequest request, String username, String hashPassword){
         HttpSession session = null;
         String cookieAcceptedVal = get_value_from_cookie("cookieAccepted", request);
-        if (this.username.equals(username) && this.hashPassword.equals(hashPassword)) {
+        if (this.username.equals(username) && this.password.equals(hashPassword)) {
             if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
                 session = request.getSession();
                 session.setAttribute("BeanUtente", this);

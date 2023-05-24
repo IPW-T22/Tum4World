@@ -1,5 +1,8 @@
 package com.github.ipwt22.tum4world.models;
 
+import com.github.ipwt22.tum4world.helpers.CitazioneHelper;
+import com.github.ipwt22.tum4world.helpers.ContatoreHelper;
+
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -17,9 +20,7 @@ public class DB {
 
     static {
         try {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            conn = DriverManager.getConnection("jdbc:derby://localhost:1527/tum4world", "App", "Password");
-            stmt = conn.createStatement();
+           stmt = conn.createStatement();
             creaTabelle();
 
 
@@ -30,25 +31,8 @@ public class DB {
 
     private static void creaTabelle() {
         try {
-            stmt.executeUpdate("CREATE TABLE utenti (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "token VARCHAR(255) NOT NULL," +
-                    "nome VARCHAR(255) NOT NULL," +
-                    "cognome VARCHAR(255) NOT NULL," +
-                    "email VARCHAR(255) NOT NULL," +
-                    "telefono VARCHAR(255) NOT NULL," +
-                    "username VARCHAR(255) NOT NULL UNIQUE ," +
-                    "password VARCHAR(255) NOT NULL," +
-                    "data_di_nascita VARCHAR(255) NOT NULL," +
-                    "ruolo INTEGER NOT NULL," +
-                    "PRIMARY KEY (id)" +
-                    ")");
-            stmt.executeUpdate("CREATE TABLE citazioni (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "testo VARCHAR(255) NOT NULL," +
-                    "autore VARCHAR(255) NOT NULL," +
-                    "PRIMARY KEY (id)" +
-                    ")");
+
+            CitazioneHelper.init(conn);
             stmt.executeUpdate("CREATE TABLE attivita (" +
                     "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
                     "titolo VARCHAR(255) NOT NULL," +
@@ -72,36 +56,9 @@ public class DB {
                     "PRIMARY KEY (id)," +
                     "FOREIGN KEY (utente_id) REFERENCES utenti(id)" +
                     ")");
-            stmt.executeUpdate("CREATE TABLE contatore (" +
-                    "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "url VARCHAR(255) NOT NULL," +
-                    "visite INTEGER NOT NULL," +
-                    "PRIMARY KEY (id)" +
-                    ")");
-            stmt.executeUpdate("INSERT INTO utenti (token, nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) " +
-                    "VALUES ('null', 'PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'admin', '22Adm1n!', '29-10-2022', 0)"
-            );
-            stmt.executeUpdate("INSERT INTO citazioni (testo, autore) VALUES " +
-                    "('Il volontariato è l’arte di mettere il proprio cuore dove gli altri hanno bisogno di esso.', 'Autori vari'), " +
-                    "('Il volontariato non è un lavoro pagato perché non ha prezzo.', 'Sherry Anderson'), " +
-                    "('L’altruismo è la forma più elevata di autorealizzazione.', 'Ayn Rand'), " +
-                    "('Non possiamo fare grandi cose sulla terra, solo piccole cose con grande amore.', 'Madre Teresa'), " +
-                    "('La felicità non arriva mai da sola, a meno che non la si condivida con gli altri.', 'Helen Keller'), " +
-                    "('Il vero significato della vita è trovare la propria vocazione nel servizio degli altri.', 'Albert Schweitzer'), " +
-                    "('Il volontariato è l’opportunità di cambiare il mondo una persona alla volta.', 'Autori vari'), " +
-                    "('Non possiamo aiutare tutti, ma tutti possono aiutare qualcuno.', 'Ronald Reagan'), " +
-                    "('Il volontariato non è solo una parola, ma un’azione che può cambiare il mondo.', 'Autori vari'), " +
-                    "('Il volontariato è l’arte di donare il proprio tempo e le proprie energie per migliorare la vita degli altri e della propria comunità.', 'Autori vari'), " +
-                    "('Il volontariato è l’opportunità di fare la differenza nella vita degli altri e nella propria vita.', 'Autori vari'), " +
-                    "('Il volontariato è l’opportunità di dare il proprio contributo alla società e alla propria comunità.', 'Autori vari'), " +
-                    "('La felicità non è avere ciò che si desidera, ma desiderare ciò che si ha.', 'Dale Carnegie'), " +
-                    "('L’unico modo per fare un grande lavoro è amare quello che fai.', 'Steve Jobs'), " +
-                    "('La vita è un’opportunità, coglila.', 'Madre Teresa'), " +
-                    "('Non c’è mai abbastanza tempo per fare tutto, ma c’è sempre abbastanza tempo per fare la cosa giusta.', 'Wesley Duewel'), " +
-                    "('Il modo migliore per trovare se stessi è perdersi nel servizio degli altri.', 'Mahatma Gandhi'), " +
-                    "('Fai del bene di nascosto e arrossisci a vederlo divulgato.', 'Seneca'), " +
-                    "('Ogni uomo è colpevole di tutto il bene che non ha fatto.', 'Voltaire'), " +
-                    "('Non basta fare del bene, bisogna anche farlo bene.', 'Denis Diderot')");
+            ContatoreHelper.init(conn);
+
+
             //admin -> 22Adm1n!
         } catch (SQLException e) {
             e.printStackTrace();
@@ -143,7 +100,7 @@ public class DB {
             user.setNome(resultSet.getString("nome"));
             user.setCognome(resultSet.getString("cognome"));
             user.setUsername(resultSet.getString("username"));
-            user.setHashPassword(resultSet.getString("password"));
+            user.setPassword(resultSet.getString("password"));
             user.setRuolo(Utente.Ruolo.values()[resultSet.getInt("ruolo")]);
             user.setEmail(resultSet.getString("email"));
             user.setTelefono(resultSet.getString("telefono"));
