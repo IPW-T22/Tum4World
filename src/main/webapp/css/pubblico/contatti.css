@@ -1,42 +1,35 @@
-body {
-    background-color: rgb(146, 181, 255);
-    
-    
-}
-main {
-    margin-left: 2%;
-    margin-right: 50%;
-    margin-top:0%;
-    
-    font-size: 150%;
-    font-family: "Times New Roman", Times, serif;
-    border:none;
-
-}
-div {
-    margin:auto;
-    
-}
-
-img {
-    height: 150px;
-}
-#im1{
-    height: 300px;
-}
 button {
     margin-top: 1em;
     background-color: rgb(12, 12, 83);
     border:none;
-    width: 30%;
+    width: 49%;
     height: 5% ;
     color:white;
     font-size: 100%;
     font-family: "Times New Roman", Times, serif;
-  
+    text-align: center;
 }
+main {
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top:0%;
+    
+    font-size: 140%;
+    font-family: "Times New Roman", Times, serif;
+    border:none;
 
+}
 input{
-    height: 4% ;
+    background-color: rgb(212, 222, 243);
+    height: 3% ;
+    width:100%;
     border:none;
 }
+#bt1{
+    width:5%;
+}
+h1{
+    text-align:center;
+}
+
+
