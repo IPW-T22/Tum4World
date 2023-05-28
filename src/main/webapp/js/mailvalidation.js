@@ -6,6 +6,6 @@ function ValidateEmail(mail)
         return (true);
     }
     //tell user that the email address is invalid, write to the page without alert
-    document.getElementById("emailAddr").innerHTML = "<div id = \"errore\"> Indirizzo email invalido</div>";
+    document.getElementById("email").innerHTML = "<div id = \"errore\"> Indirizzo email invalido</div>";
     return (false);
 }

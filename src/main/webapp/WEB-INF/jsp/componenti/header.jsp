@@ -5,6 +5,7 @@
 %>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/componenti/header.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
 </head>
 <h1 id="titolo_sito">Tum4World</h1>
 <div id="div_header">

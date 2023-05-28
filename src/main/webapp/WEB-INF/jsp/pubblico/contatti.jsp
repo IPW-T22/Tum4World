@@ -6,6 +6,7 @@
     <title>Tum4World - Contattaci</title>
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/contatti.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/contatticheck.js"></script>
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
@@ -18,7 +19,7 @@
             <p>Numero telefono associazione: 5(325)779-72-14</p>
         </div>
         <div>
-            <form action="contatti" method="post">
+            <form action="contatti" method="post" onsubmit="return ValidateForm();">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" >
                 <br>
@@ -44,7 +45,7 @@
                 <textarea id="dettagli_richiesta" name="dettagli_richiesta"></textarea>
                 <br>
 
-                <button type="submit">Invia</button>
+                <button type="submit" id="invia">Invia</button>
                 <button type="reset">Reset</button>
             </form>
         </div>

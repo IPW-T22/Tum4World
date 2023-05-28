@@ -1,57 +1,60 @@
-// Funzione per controllare la validità dell'indirizzo email
-function validaEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-}
-
-// Funzione per controllare la compilazione dei campi
-function controllaCampi() {
-    // Recupero dei valori dei campi
-    const nomeCognome = document.getElementById('nome-cognome').value;
-    const email = document.getElementById('email').value;
-    const motivoContatto = document.getElementById('motivo-contatto').value;
-
-    // Controllo validità indirizzo email
-    if (!validaEmail(email)) {
-        alert("Inserisci un indirizzo email valido.");
-        return false;
+//write a function that check that the input text with id "nome" isn't empty
+function ValidateName(nome){
+    if (nome.value == "")
+    {
+        document.getElementById("nome").innerHTML = "<div id = \"errore\"> Campo obbligatorio</div>";
+        return (false);
     }
+    return (true);
+}
 
-    // Controllo compilazione campi
-    if (nomeCognome.trim() === '' || motivoContatto === '') {
-        alert("Compila tutti i campi richiesti.");
-        return false;
+//write a function that check that the input text with id "cognome" isn't empty
+function ValidateSurname(cognome){
+    if (cognome.value == "")
+    {
+        document.getElementById("cognome").innerHTML = "<div id = \"errore\"> Campo obbligatorio</div>";
+        return (false);
     }
-
-    // Tutti i controlli sono passati, il form può essere inviato
-    return true;
+    return (true);
 }
 
-// Funzione per ripulire tutti i campi del form
-function resetCampi() {
-    document.getElementById('nome-cognome').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('motivo-contatto').value = '';
-    document.getElementById('dettagli-richiesta').value = '';
+//write a function that check that the input text with id "email" is valid
+function ValidateEmail(email){
+    //check if the email address is valid
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value))
+    {
+        return (true);
+    }
+    else{
+        if (email.value == "")
+        {
+            //tell user that the email address is empty, write to the page without alert
+            document.getElementById("email").innerHTML = "<div id = \"errore\"> Campo obbligatorio</div>";
+            return (false);
+        }
+    }
+    //tell user that the email address is invalid, write to the page without alert
+    document.getElementById("email").innerHTML = "<div id = \"errore\"> Indirizzo email invalido</div>";
+    return (false);
 }
 
-// Gestore dell'evento di invio del form
-function inviaForm(event) {
-    event.preventDefault(); // Evita l'invio del form
-
-    if (controllaCampi()) {
-        // Qui puoi inserire il codice per inviare il form al server o eseguire altre azioni
-        alert("Form inviato correttamente!");
-        resetCampi();
+//when the user click on the button "invia" call the function ValidateForm
+function ValidateForm(){
+    //get the value of the input text with id "nome"
+    var nome = document.getElementById("nome");
+    //get the value of the input text with id "cognome"
+    var cognome = document.getElementById("cognome");
+    //get the value of the input text with id "email"
+    var email = document.getElementById("email");
+    //if all the input text are valid, send the form
+    if (ValidateName(nome) && ValidateSurname(cognome) && ValidateEmail(email))
+    {
+        return true;//send form
+    }
+    else {
+        event.preventDefault();
+        return false;//do not send
     }
 }
-
-// Gestore dell'evento di reset del form
-function resetForm(event) {
-    event.preventDefault(); // Evita il reset del form di default
-    resetCampi();
-}
-
-// Aggiunta degli event listener ai pulsanti
-document.getElementById('invia').addEventListener('click', inviaForm);
-document.getElementById('reset').addEventListener('click', resetForm);
+//when the users submit the form call the function ValidateForm
+document.getElementById("invia").addEventListener("click", ValidateForm);

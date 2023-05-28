@@ -3,6 +3,7 @@
 <head>
     <title>Tum4World - Amministratore</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/amministratore.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
