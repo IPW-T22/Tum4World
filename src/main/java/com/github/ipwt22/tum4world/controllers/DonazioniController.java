@@ -1,5 +1,7 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
+import com.github.ipwt22.tum4world.helpers.DonazioneHelper;
 import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Donazione;
 import com.github.ipwt22.tum4world.models.Utente;
@@ -44,8 +46,8 @@ public class DonazioniController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getAttribute("utente");
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE || utente.getRuolo() == Utente.Ruolo.ADERENTE) {
-            int amount = Integer.parseInt(request.getParameter("amount"));
-            DB.addDonation(utente, amount);
+            double amount = Double.parseDouble(request.getParameter("euro"));
+            DonazioneHelper.aggiungiDonazione(DatabaseHelper.getConnection(), utente, amount);
         }
     }
 }

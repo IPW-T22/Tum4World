@@ -61,7 +61,7 @@ public class CitazioneHelper {
                             "autore VARCHAR(255) NOT NULL," +
                             "PRIMARY KEY (id)" +
                             ")");
-            conn.createStatement().executeUpdate("INSERT INTO citazioni (testo, autore) VALUES " +
+            conn.createStatement().executeUpdate("INSERT INTO " + TABELLA + " (testo, autore) VALUES " +
                     "('Il volontariato è l’arte di mettere il proprio cuore dove gli altri hanno bisogno di esso.', 'Autori vari'), " +
                     "('Il volontariato non è un lavoro pagato perché non ha prezzo.', 'Sherry Anderson'), " +
                     "('L’altruismo è la forma più elevata di autorealizzazione.', 'Ayn Rand'), " +

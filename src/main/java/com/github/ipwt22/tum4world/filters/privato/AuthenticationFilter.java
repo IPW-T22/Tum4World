@@ -28,7 +28,7 @@ public class AuthenticationFilter implements Filter {
 
             System.out.println("Token: " + token);
             Utente utente = UtenteHelper.fromToken(DatabaseHelper.getConnection(), token);
-            if(utente== null) throw new Exception("Utente non trovato");
+            if(utente == null) throw new Exception("Utente non trovato");
             System.out.println(utente.getUsername());
             request.setAttribute("utente", utente);
             chain.doFilter(request,response);

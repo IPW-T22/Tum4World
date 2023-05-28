@@ -24,4 +24,18 @@ public class LogoutController extends HttpServlet {
         } catch (Exception ignored) {}
         response.sendRedirect("homepage?token");
     }
+
+    public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession sessione = request.getSession(false);
+
+        String token = null;
+        if (sessione != null) token = (String)sessione.getAttribute("token");
+        if (token == null) token = request.getParameter("token");
+
+        System.out.println("Token: " + token);
+        String username = UtenteHelper.deleteFromToken(DatabaseHelper.getConnection(), token);
+        System.out.println("Eliminato: "+username);
+        response.sendRedirect("homepage?token");
+
+    }
 }

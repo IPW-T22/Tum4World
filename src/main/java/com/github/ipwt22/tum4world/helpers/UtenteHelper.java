@@ -27,9 +27,34 @@ public class UtenteHelper {
         return utente;
     }
 
+    public static String deleteFromUsername(Connection conn, String username){
+        try {
+            PreparedStatement pstm = conn.prepareStatement("DELETE FROM " + TABELLA + " WHERE username=?");
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()) return username;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public static String deleteFromToken(Connection conn, String token){
+        try {
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM " + TABELLA_SESSIONI + " WHERE token=?");
+            pstmt.setString(1, token);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) return deleteFromToken(conn, rs.getString("username"));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static Utente fromUsername(Connection conn, String username){
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA + " WHERE username = '" + username + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM " + TABELLA + " WHERE username=?");
+            pstmt.setString(1, username);
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) return fromResultSet(rs);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -39,7 +64,9 @@ public class UtenteHelper {
 
     public static Utente fromToken(Connection conn, String token){
         try {
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA_SESSIONI + " WHERE token = '" + token + "'");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM " + TABELLA_SESSIONI + " WHERE token=?");
+            pstmt.setString(1, token);
+            ResultSet rs = pstmt.executeQuery();
             if (rs.next()) return fromUsername(conn, rs.getString("username"));
         } catch (SQLException e) {
             e.printStackTrace();
@@ -49,7 +76,7 @@ public class UtenteHelper {
 
     public static void setKeyOf(Connection conn, String username, String token){
         try {
-            PreparedStatement prepStmt = conn.prepareStatement("INSERT INTO sessioni (token, username) VALUES(?, ?)");
+            PreparedStatement prepStmt = conn.prepareStatement("INSERT INTO " + TABELLA_SESSIONI + " (token, username) VALUES(?, ?)");
             prepStmt.setString(1, token);
             prepStmt.setString(2, username);
             prepStmt.executeUpdate();
@@ -61,7 +88,7 @@ public class UtenteHelper {
 
     public static void deleteTokenOfUsername(Connection conn, String username, String token){
         try {
-            PreparedStatement prepStmt = conn.prepareStatement("DELETE FROM sessioni WHERE token=? AND username=?");
+            PreparedStatement prepStmt = conn.prepareStatement("DELETE FROM " + TABELLA_SESSIONI + " WHERE token=? AND username=?");
             prepStmt.setString(1, token);
             prepStmt.setString(2, username);
             prepStmt.executeUpdate();
@@ -101,7 +128,7 @@ public class UtenteHelper {
                     "('PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'amministratore', 'amministratore', '2022-10-20', 'AMMINISTRATORE')"
             );
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
@@ -125,7 +152,7 @@ public class UtenteHelper {
 
     public static void registerUser(Connection conn, Utente user) {
         try {
-            PreparedStatement prepStmt = conn.prepareStatement("INSERT INTO utenti (nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement prepStmt = conn.prepareStatement("INSERT INTO " + TABELLA + " (nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)");
             prepStmt.setString(1, user.getUsername());
             prepStmt.setString(2, user.getCognome());
             prepStmt.setString(3, user.getEmail());
