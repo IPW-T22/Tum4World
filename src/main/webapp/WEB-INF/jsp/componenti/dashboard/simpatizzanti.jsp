@@ -1,11 +1,10 @@
 <%@ page import="com.github.ipwt22.tum4world.models.Utente" session="false" %>
-<% Utente[] utenti = {new Utente(), new Utente(), new Utente()}; %>
-
+<jsp:useBean id="simpatizzanti" class="com.github.ipwt22.tum4world.models.Utenti" scope="request"/>
 <section id="simpatizzanti">
     <h2>Simpatizzanti</h2>
     <ul>
-        <% for (int i = 0; i < utenti.length; i += 1) { %>
-            <li><%= utenti[i].getNome() %> <%= utenti[i].getCognome() %> (@<%= utenti[i].getUsername()%>)</li>
+        <% for(Utente u : simpatizzanti.getList()) { %>
+            <li><%= u.getNome() %> <%= u.getCognome() %> (@<%= u.getUsername()%>)</li>
         <% } %>
     </ul>
 </section>

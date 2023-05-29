@@ -24,7 +24,7 @@ public class DonazioniController extends HttpServlet {
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
             int anno = new Date().getYear();
             int[] donazioni = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-            DB.getDonazioni()
+            DonazioneHelper.all(DatabaseHelper.getConnection())
                     .stream()
                     .filter((donazione -> donazione.getData().getYear() == anno))
                     .forEach(donazione -> {

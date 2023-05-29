@@ -1,11 +1,12 @@
 package com.github.ipwt22.tum4world.helpers;
 
+import com.github.ipwt22.tum4world.models.Contatore;
+import com.github.ipwt22.tum4world.models.Donazione;
 import com.github.ipwt22.tum4world.models.Utente;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DonazioneHelper {
     public static final String TABELLA = "donazioni";
@@ -21,6 +22,30 @@ public class DonazioneHelper {
                     ")");
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    public static Donazione fromResultSet(ResultSet rs) throws SQLException {
+        Donazione d = new Donazione();
+        d.setId(rs.getInt("id"));
+        Utente utente = UtenteHelper.fromUsername(DatabaseHelper.getConnection(),rs.getString("username"));
+        d.setUtente(utente);
+        d.setImporto(rs.getDouble("importo"));
+        d.setData(rs.getTimestamp("data"));
+        return d;
+    }
+
+    public static List<Donazione> all(Connection conn) {
+        try {
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA);
+            List<Donazione> donazioni = new ArrayList<>();
+            while (rs.next()) {
+                Donazione d = fromResultSet(rs);
+                donazioni.add(d);
+            }
+            return donazioni;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 

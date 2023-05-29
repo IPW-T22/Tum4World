@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class UtenteHelper {
@@ -37,6 +39,20 @@ public class UtenteHelper {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<Utente> all(Connection conn){
+        try {
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM " + TABELLA);
+            List<Utente> utenti = new ArrayList<>();
+            while (rs.next()) {
+                Utente utente = fromResultSet(rs);
+                utenti.add(utente);
+            }
+            return utenti;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     public static String deleteFromToken(Connection conn, String token){
         try {
