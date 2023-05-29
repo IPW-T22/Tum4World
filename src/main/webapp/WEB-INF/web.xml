@@ -21,6 +21,7 @@
         <url-pattern>/dashboard</url-pattern>
         <url-pattern>/contatori</url-pattern>
         <url-pattern>/donazioni</url-pattern>
+        <url-pattern>/iscrizione</url-pattern>
     </filter-mapping>
 
     <filter>

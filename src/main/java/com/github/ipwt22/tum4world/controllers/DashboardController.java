@@ -1,11 +1,10 @@
 package com.github.ipwt22.tum4world.controllers;
 
+import com.github.ipwt22.tum4world.helpers.AttivitaHelper;
 import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
-import com.github.ipwt22.tum4world.helpers.DonazioneHelper;
+import com.github.ipwt22.tum4world.helpers.IscrizioneHelper;
 import com.github.ipwt22.tum4world.helpers.UtenteHelper;
-import com.github.ipwt22.tum4world.models.DB;
-import com.github.ipwt22.tum4world.models.Utente;
-import com.github.ipwt22.tum4world.models.Utenti;
+import com.github.ipwt22.tum4world.models.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,9 +21,16 @@ public class DashboardController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         RequestDispatcher dispatcher = null;
+        List<Iscrizione> iscrizioni = IscrizioneHelper.fromUtente(DatabaseHelper.getConnection(), utente);
+        List<Attivita> attivita = AttivitaHelper.all(DatabaseHelper.getConnection());
+        for(Attivita a : attivita)
+            if(iscrizioni.stream().anyMatch(i -> i.getAttivita_id() == a.getId()))
+                a.setIscritto(true);
         if (utente.getRuolo() == Utente.Ruolo.SIMPATIZZANTE) {
+            request.setAttribute("attivita", new Attivitas(attivita));
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/privato/simpatizzante.jsp");
         }else if (utente.getRuolo() == Utente.Ruolo.ADERENTE) {
+            request.setAttribute("attivita", new Attivitas(attivita));
             dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/privato/aderente.jsp");
         }else if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
             List<Utente> utenti = UtenteHelper.all(DatabaseHelper.getConnection());
