@@ -6,7 +6,7 @@
     <% for (int i = 0; i < attivita.getList().size(); i ++ ) {
         Attivita a = attivita.getList().get(i); %>
         <input type="checkbox" id="attivita_<%= i %>"
-               checked=<%= a.isIscritto() %>>
+               <%= a.isIscritto()?"checked":"" %>>
         <label for="attivita_<%= i %>" class="attivita">
             <%= a.getTitolo() %>
             <img src="<%= a.getImmagine() %>"
