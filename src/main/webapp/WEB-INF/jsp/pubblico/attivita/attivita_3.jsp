@@ -8,8 +8,8 @@
     <body>
         <jsp:include page="../../componenti/header.jsp"/>
         <main>
-            <h1>Attivita 3</h1>
-            <p>Descrizione completa attivita 3</p>
+            <h1>Supporto medico</h1>
+            <p>Tum4Word si impegna a fornire supporto medico a coloro che ne hanno bisogno nei paesi in via di sviluppo. Grazie al suo lavoro, l'organizzazione è stata in grado di fornire cure mediche di base e specialistiche, Tum4Word ha fornito supporto psicologico e ha lavorato per prevenire e curare malattie come l'HIV / AIDS e la malaria. Tutti i programmi medici di Tum4Word sono stati sviluppati in collaborazione con i governi locali e gli operatori sanitari per garantire che soddisfino le esigenze specifiche delle comunità servite.</p>
         </main>
         <jsp:include page="../../componenti/footer.jsp"/>
     </body>

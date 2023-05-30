@@ -15,7 +15,7 @@
         <div>
             <img id="im1" src="${pageContext.request.contextPath}/images/immagine_rappresentativa.jpg" alt="Immagine rappresentativa dell'associazione">
         </div>
-        <p>Tum4World è un'associazione no-profit che si occupa di promuovere lo sviluppo sostenibile e la tutela dell'ambiente a livello globale. Attraverso progetti di sensibilizzazione, raccolta fondi e collaborazioni internazionali, Tum4World mira a creare una cultura di responsabilità ambientale e a contribuire alla salvaguardia del nostro pianeta per le future generazioni. L'associazione organizza inoltre eventi e iniziative per coinvolgere la comunità locale e diffondere la consapevolezza sull'importanza di adottare comportamenti e stili di vita eco-sostenibili.</p>
+        <p>Tum4word è un'associazione che si dedica alla solidarietà e al volontariato in paesi poveri. Da anni, lavoriamo per migliorare la vita delle persone che vivono in comunità svantaggiate, fornendo supporto e risorse per soddisfare le loro esigenze. Grazie al nostro impegno costante e alla collaborazione con le comunità locali, siamo riusciti a realizzare molti progetti di successo, tra cui la costruzione di scuole e ospedali, la fornitura di acqua potabile, la promozione dell'agricoltura sostenibile e la lotta contro la povertà. Se vuoi fare la differenza nel mondo e contribuire a una causa importante, unisciti a noi e diventa parte della nostra comunità di volontari.</p>
             Vuoi scaricare il volantino della nostra associazione?
         <div>
             <a href="${pageContext.request.contextPath}/pdf/volantino.pdf" download><button>Clicca qui</button></a>
