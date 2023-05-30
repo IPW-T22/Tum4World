@@ -1,5 +1,8 @@
 package com.github.ipwt22.tum4world.filters.pubblico;
 
+import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
+import com.github.ipwt22.tum4world.helpers.UtenteHelper;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,8 +30,15 @@ public class TokenFilter implements Filter {
                         else
                             queryString = queryString + "&";
 
-                        String redirectUrl = hsr.getRequestURI() + "?" + queryString + "token=" + old_token;
-                        ((HttpServletResponse) servletResponse).sendRedirect(redirectUrl); //costruisco l'url corretto della prossima pagina che dovrò visitare e la visito
+                        if(UtenteHelper.fromToken(DatabaseHelper.getConnection(), old_token)!=null) {
+                            System.out.println("TOKEN VALIDO");
+                            String redirectUrl = hsr.getRequestURI() + "?" + queryString + "token=" + old_token;
+                            ((HttpServletResponse) servletResponse).sendRedirect(redirectUrl); //costruisco l'url corretto della prossima pagina che dovrò visitare e la visito
+                        }
+                        else {
+                            System.out.println("TOKEN NON VALIDO");
+                            break;
+                        }
                         return;
                     }
                 }

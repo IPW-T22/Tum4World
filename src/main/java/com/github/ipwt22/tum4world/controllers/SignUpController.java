@@ -37,14 +37,16 @@ public class SignUpController extends HttpServlet {
             user = new Utente();
             user.setUser(nome, cognome, email, telefono, username, password, dataDiNascita, ruolo);
             token = UtenteHelper.generateUniqueToken(username);
+            UtenteHelper.registerUser(DatabaseHelper.getConnection(), user);
+            UtenteHelper.setKeyOf(DatabaseHelper.getConnection(), username, token);
             if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
                 session = request.getSession();
                 session.setAttribute("BeanUtente", user);
                 session.setAttribute("token", token);
+                response.sendRedirect("registrazioneconfermata");
             }
-            UtenteHelper.registerUser(DatabaseHelper.getConnection(), user);
-            UtenteHelper.setKeyOf(DatabaseHelper.getConnection(), username, token);
-            response.sendRedirect("registrazioneconfermata?token="+token);
+            else
+                response.sendRedirect("registrazioneconfermata?token="+token);
         }
         else
             response.sendRedirect("signup?error=true");

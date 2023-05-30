@@ -16,8 +16,10 @@ import javax.websocket.Session;
 public class LoginController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("/WEB-INF/jsp/pubblico/login.jsp").forward(request, response);
+        System.out.println("CIAO");
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        System.out.println("VA");
         String username = request.getParameter("username");
         String password = request.getParameter("hashPassword");
         String cookieAcceptedVal = UtenteHelper.get_value_from_cookie("cookieAccepted", request);
@@ -28,14 +30,15 @@ public class LoginController extends HttpServlet {
 
         if((user=validate(username, password))!=null) {
             token = UtenteHelper.generateUniqueToken(username);
+            UtenteHelper.setKeyOf(DatabaseHelper.getConnection(), username, token);
             if(cookieAcceptedVal!=null && cookieAcceptedVal.equals("true")) {
                 session = request.getSession();
                 session.setAttribute("BeanUtente", user);
                 session.setAttribute("token", token);
-
+                response.sendRedirect("dashboard");
             }
-            UtenteHelper.setKeyOf(DatabaseHelper.getConnection(), username, token);
-            response.sendRedirect("dashboard?token="+token);
+            else
+                response.sendRedirect("dashboard?token="+token);
         }
         else {
             response.sendRedirect("login?error=true");

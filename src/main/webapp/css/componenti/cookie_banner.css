@@ -1,22 +1,44 @@
 #div_cookie_banner{
     position: fixed;
     bottom: 0;
-    left: 0;
+    margin: 0;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border: 0;
     background-color: #f8f8f8;
-    padding: 10px;
     box-shadow: 0 0 10px;
     display: inline-block;
+    width: 50%;
+    height: 40%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 #message{
     display: inline-block;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#decline_cookie{
+    float: center;
+    background-color: rgb(146, 181, 255);
+    border: none;
+    width: 15%;
+    height: 10%;
+    margin-left: 10px;
+}
+
+#accept_cookie{
+    float: center;
+    background-color: rgb(146, 181, 255);
+    border: none;
+    width: 15%;
+    height: 10%;
     margin-right: 10px;
 }
 
-#decline_cookie, #accept_cookie{
-    float:center;
-    background-color: rgb(146, 181, 255);
-    border:none;
-    width: 15%;
-    height: 20% ;
+#pannello_pulsanti{
+    margin-top: 10px;
 }

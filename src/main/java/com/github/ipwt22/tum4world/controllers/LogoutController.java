@@ -14,15 +14,22 @@ import javax.servlet.annotation.*;
 public class LogoutController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         try {
+            String token, username;
             HttpSession session = request.getSession(false);
-            String token = request.getParameter("token");
-            String username = token.substring(0, token.indexOf(":"));
-
-            UtenteHelper.deleteTokenOfUsername(DatabaseHelper.getConnection(), username, token);
-            if (session!=null)
+            if (session!=null) {
+                token = (String)session.getAttribute("token");
+                username = ((Utente)session.getAttribute("BeanUtente")).getUsername();
                 session.invalidate();
+                response.sendRedirect("homepage");
+            }
+            else{
+                token = request.getParameter("token");
+                username = token.substring(0, token.indexOf(":"));
+                UtenteHelper.deleteTokenOfUsername(DatabaseHelper.getConnection(), username, token);
+                response.sendRedirect("homepage?token");
+            }
+
         } catch (Exception ignored) {}
-        response.sendRedirect("homepage?token");
     }
 
     public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
