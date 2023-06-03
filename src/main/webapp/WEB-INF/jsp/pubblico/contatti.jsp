@@ -22,13 +22,16 @@
             <form action="contatti" method="post" onsubmit="return ValidateForm();">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" >
+                <span id="nomeErr" class="error"></span>
                 <br>
                 <label for="cognome">Cognome:</label>
                 <input type="text" id="cognome" name="cognome" >
+                <span id="cognomeErr" class="error"></span>
                 <br>
 
                 <label for="email">Indirizzo email:</label>
                 <input type="email" id="email" name="email" >
+                <span id="emailErr" class="error"></span>
                 <br>
 
                 <label for="motivo_contatto">Motivo di contatto:</label>
@@ -39,6 +42,7 @@
                     <option value="Segnalazione di problema">Segnalazione di problema</option>
                     <option value="Altro">Altro</option>
                 </select>
+                <span id="selectErr" class="error"></span>
                 <br>
 
                 <label for="dettagli_richiesta">Dettagli della richiesta:</label>

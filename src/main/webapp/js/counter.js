@@ -1,22 +1,23 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', '/tum4world/donazioni', true);
+xhr.open('GET', '/tum4world/contatori', true);
 xhr.responseType = 'json';
 xhr.onload = function () {
     if (xhr.status === 200) {
         var data = xhr.response;
-        var chart = Highcharts.chart('container_donazioni', {
+        console.log(data);
+        var chart = Highcharts.chart('container_visite', {
             chart: {
                 type: 'histogram'
             },
             title: {
-                text: 'Donazioni'
+                text: 'Visite'
             },
             xAxis: {
                 categories: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
             },
             yAxis: {
                 title: {
-                    text: 'Euro'
+                    text: 'Visite'
                 }
             },
             series: [{
@@ -26,26 +27,26 @@ xhr.onload = function () {
     }
 };
 xhr.send();
-/*
-document.addEventListener('DOMContentLoaded', function () {
-    const chart = Highcharts.chart('container_donazioni', {
+
+/*document.addEventListener('DOMContentLoaded', function () {
+    const chart = Highcharts.chart('container_visite', {
         chart: {
             type: 'histogram'
         },
         title: {
-            text: 'Donazioni'
+            text: 'Fruit Consumption'
         },
         xAxis: {
-            categories: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
+            categories: ['Apples', 'Bananas', 'Oranges']
         },
         yAxis: {
             title: {
-                text: 'Euro'
+                text: 'Fruit eaten'
             }
         },
         series: [{
             name: 'Jane',
-            data: [5, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            data: [5, 7, 3]
         }]
     });
 });*/

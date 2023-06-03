@@ -1,14 +1,18 @@
 /* script.js */
+caricaCitazione();
+
 function caricaCitazione() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
-            var data = xhr.responseText;
-            //alert(data);
-            document.getElementById("citazione").innerText = data;
+            //console.log(xhr.responseText);
+            //parse the response
+            let data = JSON.parse(xhr.responseText);
+            //scrivere nella sezione apposita la citazione
+            document.getElementById("citazione").innerText = data.testo + " cit. " + data.autore;
         }
     }
-    xhr.open('GET', '${pageContext.request.contextPath}/citazione', true);
+    xhr.open('GET', '/tum4world/citazione', true);
     xhr.send(null);
 }
 

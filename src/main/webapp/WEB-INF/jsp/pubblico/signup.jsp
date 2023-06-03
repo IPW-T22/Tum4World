@@ -5,18 +5,20 @@
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/signup.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/signupcheck.js"></script>
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
     <main>
         <h1>Registrazione:</h1>
         <div>
-            <form action="signup" method="post">
+            <form action="signup" method="post" onsubmit="return ValidateForm();">
                 <span>
                     <label for="nome">Nome:</label>
                     <br>
                     <input type="text" id="nome" name="nome" >
                     <br>
+                    <span id="nomeErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -24,6 +26,7 @@
                     <br>
                     <input type="text" id="cognome" name="cognome" >
                     <br>
+                    <span id="cognomeErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -31,6 +34,7 @@
                     <br>
                     <input type="date" id="data_nascita" name="data_nascita" >
                     <br>
+                    <span id="data_nascitaErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -38,6 +42,7 @@
                     <br>
                     <input type="email" id="email" name="email" >
                     <br>
+                    <span id="emailErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -45,6 +50,7 @@
                     <br>
                     <input type="tel" id="telefono" name="telefono" >
                     <br>
+                    <span id="telefonoErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -62,6 +68,7 @@
                     <br>
                     <input type="text" id="username" name="username">
                     <br>
+                    <span id="usernameErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -69,6 +76,7 @@
                     <br>
                     <input type="password" id="password" name="password" >
                     <br>
+                    <span id="passwordErr" class="error"></span>
                 </span>
                 <br>
                 <span>
@@ -76,6 +84,7 @@
                     <br>
                     <input type="password" id="password_conferma" name="password_conferma" >
                     <br>
+                    <span id="password_confermaErr" class="error"></span>
                 </span>
                 <br>
                 <span>

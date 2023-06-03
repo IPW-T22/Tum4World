@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 
 @WebServlet(name = "donazioni", value = "/donazioni")
 public class DonazioniController extends HttpServlet {
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
