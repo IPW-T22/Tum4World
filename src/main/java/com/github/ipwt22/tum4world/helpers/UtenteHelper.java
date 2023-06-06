@@ -29,16 +29,16 @@ public class UtenteHelper {
         return utente;
     }
 
-    public static String deleteFromUsername(Connection conn, String username){
+    public static boolean deleteFromUsername(Connection conn, String username){
         try {
             PreparedStatement pstm = conn.prepareStatement("DELETE FROM " + TABELLA + " WHERE username=?");
             pstm.setString(1, username);
-            ResultSet rs = pstm.executeQuery();
-            if (rs.next()) return username;
+            pstm.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
-        return null;
     }
 
     public static List<Utente> all(Connection conn){
@@ -53,17 +53,6 @@ public class UtenteHelper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public static String deleteFromToken(Connection conn, String token){
-        try {
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM " + TABELLA_SESSIONI + " WHERE token=?");
-            pstmt.setString(1, token);
-            ResultSet rs = pstmt.executeQuery();
-            if (rs.next()) return deleteFromToken(conn, rs.getString("username"));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public static Utente fromUsername(Connection conn, String username){
@@ -134,7 +123,7 @@ public class UtenteHelper {
                     "username VARCHAR(255) NOT NULL," +
                     "PRIMARY KEY (token)," +
                     "FOREIGN KEY (username) REFERENCES " + TABELLA + "(username)" +
-                    ")"
+                    "ON DELETE CASCADE )"
             );
 
             conn.createStatement().executeUpdate("INSERT INTO " + TABELLA + " (nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) VALUES " +

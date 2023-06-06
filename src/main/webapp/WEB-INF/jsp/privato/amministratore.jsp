@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Tum4World - Amministratore</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/amministratore.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/gestoreDashboardAmministratore.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
@@ -13,11 +14,11 @@
     <nav>
         <br>
         <br>
-        <button id="bottone_utenti_registrati">Utenti Registrati</button>
-        <button id="bottone_simpatizzanti">Simpatizzanti</button>
-        <button id="bottone_aderenti">Aderenti</button>
-        <button id="bottone_visite">Visite</button>
-        <button id="bottone_donazioni">Donazioni</button>
+        <button id="bottone_utenti_registrati" onclick="mostraUtentiRegistrati()">Utenti Registrati</button>
+        <button id="bottone_simpatizzanti" onclick="mostraSimpatizzanti()">Simpatizzanti</button>
+        <button id="bottone_aderenti" onclick="mostraAderenti()">Aderenti</button>
+        <button id="bottone_visite" onclick="mostraVisite()">Visite</button>
+        <button id="bottone_donazioni" onclick="mostraDonazioni()">Donazioni</button>
     </nav>
     <jsp:include page="../componenti/dashboard/utenti_registrati.jsp"/>
     <jsp:include page="../componenti/dashboard/simpatizzanti.jsp"/>

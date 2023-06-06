@@ -1,6 +1,7 @@
 <%@ page import="com.github.ipwt22.tum4world.models.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false"%>
 <jsp:useBean id="utenti" class="com.github.ipwt22.tum4world.models.Utenti" scope="request"/>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
 <section id="utenti_registrati">
     <h2>Utenti Registrati</h2>
     <ul>

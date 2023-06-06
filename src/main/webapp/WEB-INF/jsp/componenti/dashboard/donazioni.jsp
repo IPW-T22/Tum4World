@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false"%>
-<section id="donazioni">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
+<section id="donazioni" >
     <h2>Donazioni</h2>
     <div id="container_donazioni"></div>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/chart.js"></script>

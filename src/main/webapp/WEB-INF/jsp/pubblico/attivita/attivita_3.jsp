@@ -3,6 +3,7 @@
 <head>
     <title>Tum4World - Attività</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pubblico/paginaattivita.css">
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 </head>
     <body>

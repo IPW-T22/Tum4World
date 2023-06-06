@@ -43,10 +43,11 @@ public class DonazioniController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utente utente = (Utente) request.getAttribute("utente");
-
+        System.out.println("UTENTE: " + utente.getUsername());
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE || utente.getRuolo() == Utente.Ruolo.ADERENTE) {
             double amount = Double.parseDouble(request.getParameter("euro"));
             DonazioneHelper.aggiungiDonazione(DatabaseHelper.getConnection(), utente, amount);
         }
+        response.sendRedirect("dashboard");
     }
 }
