@@ -3,8 +3,8 @@
 <head>
     <title>Tum4World - Home page</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/homepage.css">
-    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+    <!-- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/homepage.css">
+    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico"> -->
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>

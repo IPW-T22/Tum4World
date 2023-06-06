@@ -2,15 +2,12 @@ package com.github.ipwt22.tum4world.controllers;
 
 import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
 import com.github.ipwt22.tum4world.helpers.UtenteHelper;
-import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import java.io.*;
-import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
-import javax.websocket.Session;
 
 @WebServlet(name = "login", value = "/login")
 public class LoginController extends HttpServlet {
