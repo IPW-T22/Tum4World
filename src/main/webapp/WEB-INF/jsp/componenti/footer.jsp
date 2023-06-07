@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/componenti/footer.css">
 </head>
-<footer>
+<footer id="footer">
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/cookieScript.js"></script>
     <%
         String cookieAcceptedVal = UtenteHelper.get_value_from_cookie("cookieAccepted", request);
@@ -15,5 +15,9 @@
 
     <div id="div_footer">
         <h4>Contatti</h4>
+        <p>Italia,</p>
+        <p>Prato,</p>
+        <p>Viale dei fiori, 339,</p>
+        <p>CAP: 22000</p>
     </div>
 </footer>

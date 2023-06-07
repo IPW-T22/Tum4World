@@ -4,6 +4,7 @@
     <title>Tum4World - Chi Siamo</title>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pubblico/chisiamo.css">
 </head>
 <body>
     <jsp:include page="../componenti/header.jsp"/>
@@ -15,16 +16,14 @@
         <p>Tum4Word è un’associazione di volontariato che si concentra sull'istruzione e la salute nei paesi in via di sviluppo, offrendo supporto medico e programmi educativi per bambini e adulti, in paesi povere e in via di sviluppo.</p>
 
         <h2>Chi sono i nostri fondatori e quale è la nostra storia?</h2>
-        <p>Tum4Word è stata fondata da due attivisti francesi, Marie e Pierre, 53 anni fa</p>
+        <p>Tum4Word è stata fondata da due attivisti francesi, Marie e Pierre, 53 anni fa e ora è portata avanti dai figli.</p>
         <p>L'associazione nasce con lo scopo di fornire aiuti umanitari in zone di guerra, a seguito del conflitto del 1970 </p> <%-- ispirato a medici senza frontiere --%>
         <p>L'associazione negli anni a fornito supporto umanitario, cibo ed aiutato a costruire scuole in zone povere, e devastate da guerre e carestie</p>
         <div>
-            <div>
-                <img src="${pageContext.request.contextPath}/images/fondatore_1.jpg" alt="fondatore_1">
-            </div>
-            <div>
-                <img src="${pageContext.request.contextPath}/images/fondatore_2.jpg" alt="fondatore_2">
-            </div>
+            <span>
+                <img src="${pageContext.request.contextPath}/images/fondatore_1.jpg" alt="fondatore_1" />
+                <img src="${pageContext.request.contextPath}/images/fondatore_2.jpg" alt="fondatore_2" />
+            </span>
         </div>
 
         <h2>Quali sono le nostre sedi?</h2>

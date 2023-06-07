@@ -3,6 +3,7 @@
 <head>
     <title>Tum4World - Lista attivita</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/pubblico/paginaattivita.css">
     <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/images/favicon.ico">
 </head>
 <body>
@@ -12,16 +13,16 @@
             <table>
                 <tr>
                     <td>
-                        <a href="attivita?nomeAttivita=attivita_1.jsp"><img src="image1.jpg" alt="Image 1"></a>
-                        <p>Description of Image 1</p>
+                        <a href="attivita?nomeAttivita=attivita_1.jsp"><img src="${pageContext.request.contextPath}/images/food1.jpg" alt="Image 1"></a>
+                        <p>Aiutaci a combattere la fame </p>
                     </td>
                     <td>
-                        <a href="attivita?nomeAttivita=attivita_2.jsp"><img src="image2.jpg" alt="Image 2"></a>
-                        <p>Description of Image 2</p>
+                        <a href="attivita?nomeAttivita=attivita_2.jsp"><img src="${pageContext.request.contextPath}/images/school1.jpg" alt="Image 2"></a>
+                        <p>Attività di insegnamento nelle scuole</p>
                     </td>
                     <td>
-                        <a href="attivita?nomeAttivita=attivita_3.jsp"><img src="image3.jpg" alt="Image 3"></a>
-                        <p>Description of Image 3</p>
+                        <a href="attivita?nomeAttivita=attivita_3.jsp"><img src="${pageContext.request.contextPath}/images/medicine1.jpg" alt="Image 3"></a>
+                        <p>Cura con noi i pazienti più distrutti</p>
                     </td>
                 </tr>
             </table>

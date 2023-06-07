@@ -12,6 +12,7 @@
     height: 40%;
     overflow-x: hidden;
     overflow-y: auto;
+    color: black;
 }
 
 #message{

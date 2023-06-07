@@ -9,12 +9,9 @@ main {
     font-size: 150%;
     font-family: "Times New Roman", Times, serif;
 }
-div {
-    margin:auto;
-}
 
 img {
-    height: 150px;
+    height: 175px;
 }
 #im1{
     height: 300px;

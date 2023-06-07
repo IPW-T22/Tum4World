@@ -3,7 +3,6 @@ package com.github.ipwt22.tum4world.controllers;
 import com.github.ipwt22.tum4world.helpers.CitazioneHelper;
 import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
 import com.github.ipwt22.tum4world.models.Citazione;
-import com.github.ipwt22.tum4world.models.DB;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

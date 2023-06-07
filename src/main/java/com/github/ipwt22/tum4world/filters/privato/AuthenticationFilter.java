@@ -2,7 +2,6 @@ package com.github.ipwt22.tum4world.filters.privato;
 
 import com.github.ipwt22.tum4world.helpers.DatabaseHelper;
 import com.github.ipwt22.tum4world.helpers.UtenteHelper;
-import com.github.ipwt22.tum4world.models.DB;
 import com.github.ipwt22.tum4world.models.Utente;
 
 import javax.servlet.*;

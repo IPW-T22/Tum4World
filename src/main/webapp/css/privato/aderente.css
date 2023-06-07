@@ -1,21 +1,22 @@
-nav {
-    background-color: rgb(139, 186, 248);
-    text-align: center;
-    font-size: 230%;
-    /*color:white;*/
-    height:45%;
-    line-height: 200% ;
-    
+nav, body, main {
+    background-color: red !important;
+}
 
-  
-}
 button {
-    background-color: rgb(12, 12, 83);
-    border:none;
-    width: 20%;
-    height: 12% ;
-    color:white;
-    font-size: 70%;
-    font-family: "Times New Roman", Times, serif;
-  
+    background-color: darkred !important;
 }
+
+#div_header ul, #div_footer, #footer{
+    background-color: darkred !important;
+}
+
+#div_header, #titolo_sito{
+    background-color: red !important;
+    box-shadow: 0px 3px 10px 1px rgb(122, 0, 0) !important;
+}
+
+#div_header ul li:hover, nav button:hover{
+    background-color: rgb(122, 0, 0) !important;
+}
+
+

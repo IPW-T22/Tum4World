@@ -1,4 +1,4 @@
-ul {
+#div_header ul{
     background-color: rgb(12, 12, 83);
     text-align: center;
     list-style: none;
@@ -7,18 +7,18 @@ ul {
     border: 0;
 }
 
-li {
+#div_header ul li {
     display: inline-block;
 }
 
-li a{
+#div_header ul li a{
     display: block;
     text-decoration: none;
     padding: 16px;
     color:white;
 }
 
-li:hover {
+#div_header ul li:hover {
     background-color: rgb(6, 6, 46);
 }
 
