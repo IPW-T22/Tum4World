@@ -1,15 +1,7 @@
-function EliminaProfilo(){
-    var r = confirm("Sei sicuro di voler eliminare il tuo profilo?");
-    if (r == true) {
-        $.ajax({
-            url: "/tum4world/logout",
-            type: "DELETE",
-            success: function (data) {
-                window.location.href = "login.jsp";
-            },
-            error: function (xhr, status, error) {
-                document.getElementById("elimina_profilo_error").innerText = xhr.responseText;
-            }
-        });
-    }
+async function eliminaProfilo()
+{
+    await fetch('/tum4world/logout',{ //zucchero sintattico delle promise
+        method: 'DELETE'
+    })
+    window.location = "/tum4world/homepage";
 }

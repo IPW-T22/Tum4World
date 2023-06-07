@@ -29,11 +29,3 @@ function mostraPannelloDonazione()
     nascondiTutto();
     document.getElementById("donazione").style.display = "block";
 }
-
-function eliminaProfilo()
-{
-    fetch('/tum4world/logout',{
-        method: 'DELETE'
-    })
-    window.location = "/tum4world/homepage";
-}

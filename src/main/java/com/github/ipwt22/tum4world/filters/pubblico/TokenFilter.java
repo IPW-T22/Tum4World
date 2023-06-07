@@ -32,9 +32,6 @@ public class TokenFilter implements Filter {
                     else
                         queryURLDest = queryURLDest + "&";
                     redirectUrl = hsr.getRequestURI() + "?" + queryURLDest + "token=" + token ;
-
-                    System.out.println("getRequestURI: " + redirectUrl);
-                    System.out.println(redirectUrl);
                     ((HttpServletResponse) servletResponse).sendRedirect(redirectUrl); //costruisco l'url corretto della prossima pagina che dovrò visitare e la visito
                     return;
                 }

@@ -2,6 +2,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
 <section id="elimina_profilo" >
     <h2>Elimina Profilo</h2>
-    <button id="elimina" onclick="EliminaProfilo();">Elimina</button>
+    <button id="elimina" onclick="eliminaProfilo();">Elimina</button>
     <span id="elimina_profilo_error" class="error"></span>
 </section>

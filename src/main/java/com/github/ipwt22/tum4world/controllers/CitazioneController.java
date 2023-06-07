@@ -22,5 +22,6 @@ public class CitazioneController extends HttpServlet {
             out.print(citazione.toJson());
             out.flush();
         }
+        System.out.println("CITAZIONE INVOCATA");
     }
 }

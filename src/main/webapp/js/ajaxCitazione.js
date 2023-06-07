@@ -1,10 +1,10 @@
-/* script.js */
+/* ajaxCitazione.js */
 caricaCitazione();
 
 function caricaCitazione() {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4) {
+        if (xhr.readyState === 4) {
             //console.log(xhr.responseText);
             //parse the response
             let data = JSON.parse(xhr.responseText);
@@ -17,5 +17,3 @@ function caricaCitazione() {
 }
 
 setInterval(caricaCitazione, 20*1000);
-
-//console.log("ciao");

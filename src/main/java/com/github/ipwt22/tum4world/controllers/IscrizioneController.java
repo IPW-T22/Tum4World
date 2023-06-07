@@ -18,10 +18,13 @@ public class IscrizioneController extends HttpServlet {
         int attivita_id = Integer.parseInt(request.getParameter("attivita_id"));
         boolean iscritto = Boolean.parseBoolean(request.getParameter("iscrizione"));
         Utente utente = (Utente) request.getAttribute("utente");
+        System.out.println("ISCRIZIONE INVOCATA: " + request.getParameter("token"));
+        System.out.println("attivita_id: "+ attivita_id + " iscritto: " + iscritto);
 
         Iscrizione iscrizione = new Iscrizione();
         iscrizione.setAttivita_id(attivita_id);
         iscrizione.setUsername(utente.getUsername());
+        System.out.println("iscrizione utente: "  + utente.getUsername());
         IscrizioneHelper.save(DatabaseHelper.getConnection(), iscrizione, iscritto);
     }
 }

@@ -18,7 +18,7 @@ public class DonazioneHelper {
                     "importo DECIMAL(10,2) NOT NULL," +
                     "data TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                     "PRIMARY KEY (id)," +
-                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username)" +
+                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username) ON DELETE CASCADE" +
                     ")");
         } catch (SQLException e) {
             System.err.println(e.getMessage());

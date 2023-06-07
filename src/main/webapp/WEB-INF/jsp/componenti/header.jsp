@@ -3,21 +3,11 @@
 <%@ page import="com.github.ipwt22.tum4world.models.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" session="false" %>
 <%
-    HttpSession session = request.getSession(false);
-    String token;
-    Utente utente = null;
-    boolean isTokenInvalid;
-    if(session!=null)
-        token = (String)session.getAttribute("token");
-    else
-        token = (String)request.getParameter("token");
-    System.out.println("header: " + token);
-    utente = UtenteHelper.fromToken(DatabaseHelper.getConnection(), token);
-    isTokenInvalid = (token==null) || (token.equals("")) || (utente==null);
+    Utente utente = (Utente) request.getAttribute("utente");
 %>
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/componenti/header.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/script.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/ajaxCitazione.js"></script>
 
     <% if(utente!=null && utente.getRuolo().name().equals("SIMPATIZZANTE")){ %>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/privato/simpatizzante.css">
@@ -32,7 +22,7 @@
         <li><a href="chisiamo">Chi siamo</a></li>
         <li><a href="attivita">Attività</a></li>
         <li><a href="contatti">Contatti</a></li>
-        <% if(isTokenInvalid){ %>
+        <% if(utente == null){ %>
             <li><a href="signup">Sign-up</a></li>
             <li><a href="login">Login</a></li>
         <% }else{ %>

@@ -20,7 +20,7 @@ public class IscrizioneHelper {
                     "username VARCHAR(255) NOT NULL," +
                     "attivita_id INTEGER NOT NULL," +
                     "PRIMARY KEY (username, attivita_id)," +
-                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username)," +
+                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username) ON DELETE CASCADE," +
                     "FOREIGN KEY (attivita_id) REFERENCES " + AttivitaHelper.TABELLA + "(id)" +
                     ")"
             );
@@ -31,6 +31,7 @@ public class IscrizioneHelper {
     public static void save(Connection conn, Iscrizione i, boolean add) {
         try {
             PreparedStatement pstmt;
+            System.out.println("INSERT INTO iscrizioni (username, attivita_id) VALUES(" + i.getUsername() + ", " + i.getAttivita_id()+")");
             if (add)
                 pstmt = conn.prepareStatement("INSERT INTO " + TABELLA + " (username, attivita_id) VALUES (?, ?)");
             else
