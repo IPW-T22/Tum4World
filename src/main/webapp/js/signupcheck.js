@@ -1,7 +1,8 @@
-//check if the field nome is empty
 function ValidateName(nome){
-    console.log("name");
-    if (nome.value == ""){
+    //console.log("name");
+    console.log(nome.value);
+    //check if the field nome is empty
+    if (nome.value == "" || nome.value == null){
         document.getElementById("nomeErr").innerText = "Campo obbligatorio";
         return (false);
     }
@@ -9,8 +10,8 @@ function ValidateName(nome){
 }
 //check if the field cognome is empty
 function ValidateSurname(cognome){
-    console.log("surname");
-    if (cognome.value == ""){
+    //console.log("surname");
+    if (cognome.value == "" || cognome.value == null){
         document.getElementById("cognomeErr").innerText = "Campo obbligatorio";
         return (false);
     }
@@ -18,8 +19,9 @@ function ValidateSurname(cognome){
 }
 //check if the field data_nascita is empty, if it isn't empty check if the age is greater than 18
 function ValidateDate(data_nascita){
-    console.log("date");
-    if (data_nascita.value == "" || data_nascita.value == null){
+    //console.log("date");
+    console.log(data_nascita.value);
+    if (data_nascita.value == "" || data_nascita.value === null){
         document.getElementById("data_nascitaErr").innerText = "Campo obbligatorio";
         return (false);
     }
@@ -63,6 +65,16 @@ function ValidatePhone(telefono){
     return (true);
 }
 
+//check if the field username is empty
+function ValidateUsername(username){
+    console.log("username");
+    if (username.value == ""){
+        document.getElementById("usernameErr").innerText = "Campo obbligatorio";
+        return (false);
+    }
+    return (true);
+}
+
 //check if the field password is empty
 function ValidatePassword(password){
     console.log("psw");
@@ -94,34 +106,71 @@ function ValidateConfirmPassword(confermaPassword){
 }
 
 //when the user click on the button "invia" call the function ValidateForm
-function ValidateForm(){
+function ValidateForm(ev){
+    //ev.preventDefault();
     //get the value of the input text with id "nome"
-    var nome = document.getElementById("nome");
+    let nome = document.getElementById("nome");
     //get the value of the input text with id "cognome"
-    var cognome = document.getElementById("cognome");
+    let cognome = document.getElementById("cognome");
     //get the value of the input text with id "data_nascita"
-    var data_nascita = document.getElementById("data_nascita");
+    let data_nascita = document.getElementById("data_nascita");
     //get the value of the input text with id "email"
-    var email = document.getElementById("email");
+    let email = document.getElementById("email");
     //get the value of the input text with id "telefono"
-    var telefono = document.getElementById("telefono");
+    let telefono = document.getElementById("telefono");
     //get the value of the input text with id "password"
-    var password = document.getElementById("password");
+    let password = document.getElementById("password");
     //get the value of the input text with id "conferma password"
-    var confermaPassword = document.getElementById("conferma_password");
-    //for each field, create a variable that contains the result of the validation
-    var nomeValido = ValidateName(nome);
-    var cognomeValido = ValidateSurname(cognome);
-    var data_nascitaValida = ValidateDate(data_nascita);
-    var emailValida = ValidateEmail(email);
-    var telefonoValido = ValidatePhone(telefono);
-    var passwordValida = ValidatePassword(password);
-    var confermaPasswordValida = ValidateConfirmPassword(confermaPassword);
+    let confermaPassword = document.getElementById("password_conferma");
+    let username = document.getElementById("username");
+    //controllo che i campi siano tutti validi
+    let nomeValido = ValidateName(nome);
+    let cognomeValido = ValidateSurname(cognome);
+    let data_nascitaValida = ValidateDate(data_nascita);
+    let emailValida = ValidateEmail(email);
+    let telefonoValido = ValidatePhone(telefono);
+    let usernameValido = ValidateUsername(username);
+    let passwordValida = ValidatePassword(password);
+    let confermaPasswordValida = ValidateConfirmPassword(confermaPassword);
+    if (nomeValido){
+        document.getElementById("nomeErr").innerText = "";
+    }
+    if (cognomeValido) {
+        document.getElementById("cognomeErr").innerText = "";
+    }
+    if (data_nascitaValida){
+        document.getElementById("data_nascitaErr").innerText = "";
+    }
+    if (emailValida) {
+        document.getElementById("emailErr").innerText = "";
+    }
+    if (telefonoValido){
+        document.getElementById("telefonoErr").innerText = "";
+    }
+    if (usernameValido){
+        document.getElementById("usernameErr").innerText = "";
+    }
+    if (passwordValida){
+        document.getElementById("passwordErr").innerText = "";
+    }
+    if (confermaPasswordValida){
+        document.getElementById("password_confermaErr").innerText = "";
+    }
+    console.log(nomeValido);
+    console.log(cognomeValido);
+    console.log(data_nascitaValida);
+    console.log(emailValida);
+    console.log(telefonoValido);
+    console.log(usernameValido);
+    console.log(password.value);
+    console.log(passwordValida);
+    console.log(confermaPassword.value);
+    console.log(confermaPasswordValida);
     //if all the input text are valid, send the form
     if (nomeValido && cognomeValido && data_nascitaValida && emailValida && telefonoValido && passwordValida && confermaPasswordValida){
         return true;//send form
     }else{
-        event.preventDefault();
+        ev.preventDefault();
         return false;//do not send
     }
 }

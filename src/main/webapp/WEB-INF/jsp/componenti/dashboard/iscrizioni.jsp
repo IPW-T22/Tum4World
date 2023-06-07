@@ -1,5 +1,6 @@
 <%@ page import="com.github.ipwt22.tum4world.models.Attivita" session="false" %>
 <jsp:useBean id="attivita" class="com.github.ipwt22.tum4world.models.Attivitas" scope="request"/>
+<script src="${pageContext.request.contextPath}/js/changesub.js"></script>
 
 <section id="iscrizioni">
     <h2>Iscrizioni</h2>
@@ -15,3 +16,4 @@
         <br/>
     <% } %>
 </section>
+<span id="changeErr" class="error"></span>
