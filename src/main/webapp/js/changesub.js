@@ -6,7 +6,7 @@
 function modificaIscrizione(id) {
     var attivita_id = "attivita_" + id;
     var iscrizione = document.getElementById(attivita_id).checked;
-    var urlOfRequest = "/tum4world/iscrizione";
+    var urlOfRequest = "./iscrizione";
     var urlParams = new URLSearchParams(window.location.search);
     var token = urlParams.get("token");
 

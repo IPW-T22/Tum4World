@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
 <section id="donazione" >
     <h2>Donazione</h2>
-    <form method="post" action="donazioni">
+    <form method="post" action="donazioni?token=<%= request.getParameter("token") %>">
         <input name="euro" id="euro" type="number">
         <label for="euro">€</label>
         <input type="submit" value="Dona">
