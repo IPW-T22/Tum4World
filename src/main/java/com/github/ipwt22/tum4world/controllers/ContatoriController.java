@@ -13,13 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "contatori", value = "/contatori")
 public class ContatoriController extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Utente utente = (Utente) request.getAttribute("utente");
         if (utente.getRuolo() == Utente.Ruolo.AMMINISTRATORE) {
-            List<Contatore> contatori = ContatoreHelper.all(DatabaseHelper.getConnection());
+            List<Contatore> contatori = ContatoreHelper.all(DatabaseHelper.getConnection())
+                    .stream()
+                    .filter(contatore -> !contatore.getPercorso().matches(".*\\.[^/]*$"))
+                    .peek(contatore -> {
+                        String[] percorso = contatore.getPercorso().split("/");
+                        String pagina = percorso[percorso.length - 1];
+                        pagina = pagina.substring(0,1).toUpperCase() + pagina.substring(1);
+                        contatore.setNome(pagina);
+                    })
+                    .collect(Collectors.toList());
 
             try (PrintWriter out = response.getWriter()) {
                 response.setContentType("application/json");
