@@ -14,11 +14,11 @@ public class DonazioneHelper {
         try {
             conn.createStatement().executeUpdate("CREATE TABLE " + TABELLA + " (" +
                     "id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1)," +
-                    "username VARCHAR(255) NOT NULL," +
+                    "username VARCHAR(255) ," +
                     "importo DECIMAL(10,2) NOT NULL," +
                     "data TIMESTAMP DEFAULT CURRENT_TIMESTAMP," +
                     "PRIMARY KEY (id)," +
-                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username) ON DELETE CASCADE" +
+                    "FOREIGN KEY (username) REFERENCES " + UtenteHelper.TABELLA + "(username) ON DELETE SET NULL" +
                     ")");
         } catch (SQLException e) {
             System.err.println(e.getMessage());
