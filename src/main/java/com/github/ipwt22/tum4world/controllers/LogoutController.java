@@ -49,7 +49,6 @@ public class LogoutController extends HttpServlet {
 
         if(utente!=null) {
             UtenteHelper.deleteFromUsername(DatabaseHelper.getConnection(), utente.getUsername());
-            UtenteHelper.deleteFromUsername(DatabaseHelper.getConnection(), utente.getUsername());
         }
         else
             System.err.println("Errore nell'eliminazione dell'utente");

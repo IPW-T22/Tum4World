@@ -10,7 +10,7 @@ public class Contatore implements Serializable {
 
     // ATTRIBUTI
     private String percorso;
-
+    private String nome;
     private int visite;
 
     // GETTER e SETTER
@@ -44,5 +44,13 @@ public class Contatore implements Serializable {
 
     public String toJson() {
         return GSON.toJson(this);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 }
