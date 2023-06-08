@@ -28,10 +28,12 @@ function mostraVisite()
 {
     nascondiTutto();
     document.getElementById("visite").style.display = "block";
+    visite();
 }
 
 function mostraDonazioni()
 {
     nascondiTutto();
     document.getElementById("donazioni").style.display = "block";
+    donazioni();
 }
