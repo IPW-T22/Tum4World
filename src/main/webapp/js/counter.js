@@ -1,9 +1,16 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', '/tum4world/contatori', true);
+xhr.open('GET', './contatori', true);
 xhr.responseType = 'json';
 xhr.onload = function () {
+    console.log(xhr.status);
+    console.log(xhr.response);
+    //console.log(xhr.responseText);
     if (xhr.status === 200) {
         var data = xhr.response;
+        /*console.log(data)
+        data = JSON.parse(data);
+        var cat = data.percorso;
+        console.log(cat);*/
         console.log(data);
         var chart = Highcharts.chart('container_visite', {
             chart: {
@@ -27,26 +34,3 @@ xhr.onload = function () {
     }
 };
 xhr.send();
-
-/*document.addEventListener('DOMContentLoaded', function () {
-    const chart = Highcharts.chart('container_visite', {
-        chart: {
-            type: 'histogram'
-        },
-        title: {
-            text: 'Fruit Consumption'
-        },
-        xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
-        },
-        yAxis: {
-            title: {
-                text: 'Fruit eaten'
-            }
-        },
-        series: [{
-            name: 'Jane',
-            data: [5, 7, 3]
-        }]
-    });
-});*/

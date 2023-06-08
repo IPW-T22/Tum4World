@@ -1,7 +1,7 @@
 async function eliminaProfilo()
 {
-    await fetch('/tum4world/logout',{ //zucchero sintattico delle promise
+    await fetch('./logout',{ //zucchero sintattico delle promise
         method: 'DELETE'
     })
-    window.location = "/tum4world/homepage";
+    window.location = "./homepage";
 }

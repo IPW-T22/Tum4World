@@ -18,7 +18,7 @@ function modificaIscrizione(id) {
             }
         }
     }
-    xhr.open("POST", "/tum4world/iscrizione", true);
+    xhr.open("POST", "./iscrizione", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     var data = "attivita_id=" + id + "&iscrizione=" + iscrizione;

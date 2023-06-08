@@ -3,6 +3,7 @@ caricaCitazione();
 
 function caricaCitazione() {
     var xhr = new XMLHttpRequest();
+    //console.log("aggiornato");
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
             //console.log(xhr.responseText);
@@ -12,7 +13,7 @@ function caricaCitazione() {
             document.getElementById("citazione").innerText = data.testo + " cit. " + data.autore;
         }
     }
-    xhr.open('GET', '/tum4world/citazione', true);
+    xhr.open('GET', './citazione', true);
     xhr.send(null);
 }
 

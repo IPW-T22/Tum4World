@@ -1,5 +1,5 @@
 var xhr = new XMLHttpRequest();
-xhr.open('GET', '/tum4world/donazioni', true);
+xhr.open('GET', './donazioni', true);
 xhr.responseType = 'json';
 xhr.onload = function () {
     if (xhr.status === 200) {
