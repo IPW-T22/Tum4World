@@ -3,5 +3,4 @@
 <section id="visite" >
     <h2>Visite</h2>
     <div id="container_visite"></div>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/counter.js"></script>
 </section>

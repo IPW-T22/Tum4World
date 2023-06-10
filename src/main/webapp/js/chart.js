@@ -1,6 +1,13 @@
 function donazioni() {
     var xhlr = new XMLHttpRequest();
-    xhlr.open('GET', './donazioni', true);
+    var urlOfRequest = "./donazioni";
+    var urlParams = new URLSearchParams(window.location.search);
+    var token = urlParams.get("token");
+    if(token!=null){
+        urlOfRequest += "?token=" + token;
+    }
+    console.log("donazioni: " + urlOfRequest);
+    xhlr.open('GET', urlOfRequest, true);
     xhlr.responseType = 'json';
     xhlr.onload = function () {
         if (xhlr.status === 200) {

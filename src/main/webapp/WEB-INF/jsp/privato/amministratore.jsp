@@ -3,6 +3,8 @@
 <head>
     <title>Tum4World - Amministratore</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/privato/basic_amministratore.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/chart.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/counter.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/gestoreDashboardAmministratore.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/histogram-bellcurve.js"></script>

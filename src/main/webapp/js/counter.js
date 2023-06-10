@@ -1,6 +1,13 @@
 function visite() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', './contatori', true);
+    var urlOfRequest = "./contatori";
+    var urlParams = new URLSearchParams(window.location.search);
+    var token = urlParams.get("token");
+    if(token!=null){
+        urlOfRequest += "?token=" + token;
+    }
+    console.log("visite: " + urlOfRequest);
+    xhr.open('GET', urlOfRequest, true);
     xhr.responseType = 'json';
     xhr.onreadystatechange = function () {
         console.log(xhr.status);
