@@ -30,13 +30,13 @@
         <p>L'organizzazione ha sede a Parigi e ha aperto filiali in diversi paesi africani, tra cui Senegal, Camerun, e Costa d'Avorio.</p>
         <div>
             <div>
-                <img src="sede_1.jpg" alt="sede_1">
+                <img src="${pageContext.request.contextPath}/images/sede1.jpg" alt="sede_1">
             </div>
             <div>
-                <img src="sede_2.jpg" alt="sede_2">
+                <img src="${pageContext.request.contextPath}/images/sede2.jpg" alt="sede_2">
             </div>
             <div>
-                <img src="sede_3.jpg" alt="sede_3">
+                <img src="${pageContext.request.contextPath}/images/sede3.jpg" alt="sede_3">
             </div>
         </div>
 
