@@ -6,7 +6,7 @@ button {
     height: 5% ;
     color:white;
     font-size: 100%;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Calibri";
     text-align: center;
 }
 main {
@@ -15,7 +15,7 @@ main {
     margin-top:0%;
     
     font-size: 140%;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Calibri";
     border:none;
 
 }
@@ -30,5 +30,8 @@ input{
 }
 h1{
     text-align:center;
+}
+.error{
+    color:red;
 }
 

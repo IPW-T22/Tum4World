@@ -7,7 +7,7 @@ main {
     padding: 0px;
     text-align: center;
     font-size: 150%;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Calibri";
 }
 
 img {
@@ -24,5 +24,5 @@ button {
     height: 5% ;
     color:white;
     font-size: 100%;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Calibri";
 }

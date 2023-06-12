@@ -2,7 +2,9 @@ main {
     background-color: rgb(146, 181, 255);
     text-align: center;
     font-size: 150%;
-    font-family: "Times New Roman", Times, serif;
+    .error{
+        color:red;
+    }
 }
 div {
     margin:auto;
