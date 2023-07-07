@@ -1,4 +1,5 @@
-function visite() {
+function visite()
+{
     var xhr = new XMLHttpRequest();
     var urlOfRequest = "./contatori";
     var urlParams = new URLSearchParams(window.location.search);
@@ -14,13 +15,20 @@ function visite() {
         console.log(xhr.response);
         //console.log(xhr.responseText);
         if (xhr.status === 200) {
+            let sumContatore = 0;
+            let j = 0;
             var visite = xhr.response;
             var arcat = [];
             var arval = [];
             for (let i in visite) {
-                arcat[i] = visite[i].nome;
-                arval[i] = visite[i].visite;
+                if(isAPage(visite[i].nome)) {
+                    arcat[j] = visite[i].nome;
+                    arval[j] = visite[i].visite;
+                    sumContatore = sumContatore + visite[i].visite;
+                    ++j;
+                }
             }
+            document.getElementById("contatore_totale").innerHTML = "Totale: " + sumContatore;
             /*console.log(data)
             data = JSON.parse(data);
             var cat = data.percorso;
@@ -48,4 +56,19 @@ function visite() {
         }
     };
     xhr.send();
+}
+
+function isAPage(pagina)
+{
+    if(pagina=="Tum4world" || pagina=="Login" || pagina=="Dashboard" || pagina=="Iscrizione" || pagina=="Homepage" || pagina=="Signup" || pagina=="Registrazioneconfermata" || pagina=="Contatti" || pagina=="Attivita" || pagina=="Chisiamo" || pagina=="Invioconfermato")
+        return true;
+    return false;
+}
+
+async function resetContatori()
+{
+    await fetch('./contatori',{ //zucchero sintattico delle promise
+        method: 'DELETE'
+    })
+    visite();
 }

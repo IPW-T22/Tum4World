@@ -19,7 +19,7 @@
             <p>Numero telefono associazione: 5(325)779-72-14</p>
         </div>
         <div>
-            <form action="contatti" method="post" onsubmit="return ValidateForm();">
+            <form action="contatti?token=<%out.println(request.getParameter("token")); %>" method="post" onsubmit="return ValidateForm();">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" >
                 <span id="nomeErr" class="error"></span>

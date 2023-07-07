@@ -75,6 +75,8 @@ nav button:hover{
     display: none;
 }
 
-
+#contatore_totale{
+    text-align: center
+}
 
 
