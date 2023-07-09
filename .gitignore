@@ -1,4 +1,5 @@
 target/
+!target/tum4world-1.0-SNAPSHOT/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
