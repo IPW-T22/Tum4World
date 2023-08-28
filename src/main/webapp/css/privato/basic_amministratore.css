@@ -50,6 +50,23 @@ nav button:hover{
     color: black;
     display: none;
 }
+#iscrizioni .attivita {
+    width: 30%;
+    display: block;
+    border: 10px solid #f8f8f8;
+    padding: 10px;
+    margin: 10px;
+}
+#iscrizioni input:checked + .attivita {
+    border-color: green;
+}
+#iscrizioni .attivita img {
+    width: 100%;
+    display: block;
+}
+#iscrizioni input {
+    /*display: none;*/
+}
 
 #donazione{
     background-color: white;

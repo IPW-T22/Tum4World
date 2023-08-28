@@ -6,10 +6,9 @@
 <section id="iscrizioni">
     <h2>Iscrizioni</h2>
     <% for (int i = 0; i < attivita.getList().size(); i ++ ) {
-        Attivita a = attivita.getList().get(i);
-        System.out.println(a.isIscritto()); %>
+        Attivita a = attivita.getList().get(i);%>
         <input type="checkbox" onclick="modificaIscrizione(<%= i+1 %>)" id="attivita_<%= i+1 %>" <%= a.isIscritto()?"checked":"" %>>
-        <label for="attivita_<%= i %>" class="attivita">
+        <label for="attivita_<%= i+1 %>" class="attivita">
             <%= a.getTitolo() %>
             <img src="<%= a.getImmagine() %>"
                  alt="<%= a.getTitolo() %>">

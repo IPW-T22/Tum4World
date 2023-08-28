@@ -1,6 +1,6 @@
 ## Requisiti
 - Apache Tomcat `8.5.87`
-- Open JDK `1.8.0_382`
+- Open JDK `17.0.8`
 - Apache Derby `10.14.2.0`
 
 ## Istruzioni per il deploy
