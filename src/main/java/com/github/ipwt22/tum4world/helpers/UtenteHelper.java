@@ -127,10 +127,10 @@ public class UtenteHelper {
             );
 
             conn.createStatement().executeUpdate("INSERT INTO " + TABELLA + " (nome, cognome, email, telefono, username, password, data_di_nascita, ruolo) VALUES " +
-                    "('PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'admin', '22Adm1n!', '2022-10-20', 'AMMINISTRATORE')," +
-                    "('PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'simpatizzante', 'simpatizzante', '2022-10-20', 'SIMPATIZZANTE')," +
-                    "('PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'aderente', 'aderente', '2022-10-20', 'ADERENTE')," +
-                    "('PippoAdmin', 'PaperinoAdmin', 'pincopallino@gmail2023.com', '39219828172', 'amministratore', 'amministratore', '2022-10-20', 'AMMINISTRATORE')"
+                    "('Mario', 'Rossi', 'mariorossi@gmail2023.com', '39219828172', 'admin', '22Adm1n!', '2022-10-20', 'AMMINISTRATORE')," +
+                    "('Simone', 'Bianchi', 'simonebianchi@gmail2023.com', '39219828173', 'simpatizzante', 'simpatizzante', '2022-10-20', 'SIMPATIZZANTE')," +
+                    "('Gabriele', 'Neri', 'gabrieleneri@gmail2023.com', '39219828174', 'aderente', 'aderente', '2022-10-20', 'ADERENTE')," +
+                    "('Monica', 'Marrone', 'monicamarrone@gmail2023.com', '39219828175', 'amministratore', 'amministratore', '2022-10-20', 'AMMINISTRATORE')"
             );
         } catch (SQLException e) {
             System.err.println(e.getMessage());
